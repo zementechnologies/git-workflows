@@ -70,3 +70,4 @@ git bisect reset
 ```
 
 Proceed to [lab.md](./lab.md) to practice disaster recovery.
+

@@ -26,3 +26,4 @@ Thank you for your interest in improving the Zemen Technologies Git & Engineerin
    - [ ] All HTML files render properly without console errors.
    - [ ] Slide deck transitions and code highlights function smoothly.
    - [ ] Lab steps are tested and reproducible in a clean terminal shell.
+

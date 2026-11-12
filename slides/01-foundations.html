@@ -72,26 +72,23 @@
         <h2>The Three Trees of Git</h2>
         <p>Understanding where your code lives at any second:</p>
         <div class="cols-3" style="margin-top: 1.2em;">
-          <div class="card">
-            <span style="font-size: 1.5em;">📂</span>
+          <div class="panel">
             <h4>1. Working Directory</h4>
-            <p style="font-size: 0.85em; color: #5A5652;">
+            <p style="font-size: 0.85em; color: #524E48;">
               The visible files on your filesystem that you edit in VSCode / IDE. Untracked and uncommitted changes live here.
             </p>
             <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">Real files on disk</code>
           </div>
-          <div class="card highlight">
-            <span style="font-size: 1.5em;">📦</span>
+          <div class="panel panel-accent">
             <h4 style="color: #A51C30;">2. Staging Area (Index)</h4>
-            <p style="font-size: 0.85em; color: #5A5652;">
+            <p style="font-size: 0.85em; color: #524E48;">
               A binary file (<tt>.git/index</tt>) holding the exact snapshot destined for your next commit. You curate this with <tt>git add</tt>.
             </p>
             <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">git add file.ts</code>
           </div>
-          <div class="card navy">
-            <span style="font-size: 1.5em;">🏛️</span>
-            <h4 style="color: #0C2340;">3. Git Repository</h4>
-            <p style="font-size: 0.85em; color: #5A5652;">
+          <div class="panel">
+            <h4>3. Git Repository</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
               The permanent historical database inside <tt>.git/objects</tt>. Once committed, data is virtually impossible to lose.
             </p>
             <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">git commit -m "..."</code>
@@ -244,3 +241,4 @@ git config --global alias.br branch</code></pre>
   </script>
 </body>
 </html>
+

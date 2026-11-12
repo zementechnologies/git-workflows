@@ -85,3 +85,4 @@ Thumbs.db
 ```
 
 Proceed to [lab.md](./lab.md) to practice resolving a synthetic lockfile collision.
+

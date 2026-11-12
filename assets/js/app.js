@@ -1,5 +1,6 @@
 /**
  * Zemen Technologies Git & Workflows Portal Application Logic
+ * Clean, fast, and lightweight DOM controller.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,10 +17,10 @@ function initTheme() {
   
   if (savedTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcon('dark');
+    if (toggleBtn) toggleBtn.textContent = 'Light';
   } else {
     document.documentElement.removeAttribute('data-theme');
-    updateThemeIcon('light');
+    if (toggleBtn) toggleBtn.textContent = 'Dark';
   }
 
   if (toggleBtn) {
@@ -28,30 +29,20 @@ function initTheme() {
       if (isDark) {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('zemen-theme', 'light');
-        updateThemeIcon('light');
+        toggleBtn.textContent = 'Dark';
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('zemen-theme', 'dark');
-        updateThemeIcon('dark');
+        toggleBtn.textContent = 'Light';
       }
     });
   }
 }
 
-function updateThemeIcon(theme) {
-  const icon = document.querySelector('#theme-toggle-btn i');
-  if (!icon) return;
-  if (theme === 'dark') {
-    icon.className = 'fas fa-sun';
-  } else {
-    icon.className = 'fas fa-moon';
-  }
-}
-
 /* Track Filtering */
 function initTrackFilters() {
-  const pills = document.querySelectorAll('.filter-pill');
-  const cards = document.querySelectorAll('.track-card');
+  const pills = document.querySelectorAll('.filter-btn');
+  const rows = document.querySelectorAll('.track-row');
 
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -60,13 +51,12 @@ function initTrackFilters() {
 
       const filter = pill.getAttribute('data-filter');
 
-      cards.forEach(card => {
-        const category = card.getAttribute('data-category');
+      rows.forEach(row => {
+        const category = row.getAttribute('data-category');
         if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.3s ease';
+          row.style.display = 'grid';
         } else {
-          card.style.display = 'none';
+          row.style.display = 'none';
         }
       });
     });
@@ -80,17 +70,17 @@ function initSearch() {
 
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.track-card');
+    const rows = document.querySelectorAll('.track-row');
 
-    cards.forEach(card => {
-      const title = card.querySelector('.track-title')?.textContent.toLowerCase() || '';
-      const desc = card.querySelector('.track-description')?.textContent.toLowerCase() || '';
-      const topics = card.querySelector('.track-topics')?.textContent.toLowerCase() || '';
+    rows.forEach(row => {
+      const title = row.querySelector('.track-name')?.textContent.toLowerCase() || '';
+      const desc = row.querySelector('.track-synopsis')?.textContent.toLowerCase() || '';
+      const tags = row.querySelector('.tag-cluster')?.textContent.toLowerCase() || '';
 
-      if (title.includes(query) || desc.includes(query) || topics.includes(query)) {
-        card.style.display = 'flex';
+      if (title.includes(query) || desc.includes(query) || tags.includes(query)) {
+        row.style.display = 'grid';
       } else {
-        card.style.display = 'none';
+        row.style.display = 'none';
       }
     });
   });
@@ -98,25 +88,22 @@ function initSearch() {
 
 /* Copy to Clipboard */
 function initCopyButtons() {
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const codeTarget = btn.getAttribute('data-clipboard-target');
-      let text = '';
-      if (codeTarget) {
-        text = document.querySelector(codeTarget)?.textContent || '';
-      } else {
-        const parent = btn.closest('.code-box') || btn.closest('pre');
-        text = parent?.querySelector('code')?.textContent || parent?.textContent || '';
-      }
+  document.querySelectorAll('.copy-btn-action, .copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.closest('.code-cell-wrapper') || btn.closest('.code-box') || btn.parentElement;
+      const text = parent?.querySelector('code')?.textContent || '';
 
-      text = text.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const originalHtml = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check" style="color: #10B981;"></i>';
-        setTimeout(() => {
-          btn.innerHTML = originalHtml;
-        }, 1800);
-      });
+      if (text) {
+        navigator.clipboard.writeText(text.trim()).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied';
+          btn.style.color = '#A51C30';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.color = '';
+          }, 1500);
+        });
+      }
     });
   });
 }

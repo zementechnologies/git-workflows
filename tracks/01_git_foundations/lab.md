@@ -89,3 +89,4 @@ git commit -m "docs: list service features"
 - [x] Verified commit object and tree structure with `git cat-file`.
 - [x] Successfully split a hunk and staged atomic changes with `git add -p`.
 - [x] Confirmed that `main` is merely a pointer inside `.git/refs/heads/main`.
+

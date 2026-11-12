@@ -59,3 +59,4 @@ Accidental credential exposure in public or private Git repositories is one of t
 3. **If a secret is pushed:** Treat it as immediately compromised. Rotate the key in the external provider first, then purge Git history using `git-filter-repo`.
 
 Proceed to [lab.md](./lab.md) to practice release tagging and secret prevention.
+

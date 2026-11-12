@@ -69,3 +69,4 @@ $ cat .git/refs/heads/main
 
 ## 4. Next Step: Hands-on Lab
 Proceed to [lab.md](./lab.md) to complete the terminal exercises.
+

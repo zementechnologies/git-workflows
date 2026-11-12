@@ -61,3 +61,4 @@ Configure `.github/workflows/ci.yml` to automatically reject failing PRs before 
 - Automated PR size labeling (`size/S`, `size/M`, `size/L`, `size/XL`)
 
 Proceed to [lab.md](./lab.md) to practice setting up automated pre-commit hooks.
+

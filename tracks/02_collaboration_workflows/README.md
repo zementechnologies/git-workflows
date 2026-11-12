@@ -73,3 +73,4 @@ Every Pull Request opened at Zemen should include:
 - **Risk Assessment:** Any breaking changes or database migration considerations?
 
 Proceed to [lab.md](./lab.md) to practice the collaboration lifecycle.
+

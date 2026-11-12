@@ -73,3 +73,4 @@ git status -s
 git add .env.example .gitignore
 git commit -m "chore(security): add environment template and ignore secrets"
 ```
+

@@ -22,12 +22,12 @@ cat << 'EOF' > .git/hooks/pre-commit
 
 # Check for forbidden debug artifacts
 if git diff --cached | grep -E "(TODO: REMOVE_BEFORE_PROD|AKIA[0-9A-Z]{16}|live_sec_)"; then
-  echo "❌ [Zemen Hook]: Forbidden token or secret detected in staged changes!"
+  echo "[Error]: Forbidden token or secret detected in staged changes!"
   echo "Please clean up debug flags and ensure secrets are in .env before committing."
   exit 1
 fi
 
-echo "✅ [Zemen Hook]: Pre-commit checks passed successfully."
+echo "[Passed]: Pre-commit checks passed successfully."
 exit 0
 EOF
 
@@ -46,7 +46,7 @@ git commit -m "feat: add token"
 ```
 Notice the output:
 ```
-❌ [Zemen Hook]: Forbidden token or secret detected in staged changes!
+[Error]: Forbidden token or secret detected in staged changes!
 ```
 The commit is automatically blocked!
 
@@ -58,6 +58,7 @@ git commit -m "feat(auth): load token from environment variables"
 ```
 The commit succeeds!
 ```
-✅ [Zemen Hook]: Pre-commit checks passed successfully.
+[Passed]: Pre-commit checks passed successfully.
 [main (root-commit) 8f3c1b2] feat(auth): load token from environment variables
 ```
+
