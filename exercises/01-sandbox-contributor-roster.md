@@ -110,3 +110,13 @@ git push -u origin feat/add-<your-name>
 ```
 
 Then visit [github.com/zementechnologies/git-sandbox](https://github.com/zementechnologies/git-sandbox) and click **"Compare & pull request"**. Fill out the checklist and submit!
+
+---
+
+## Questions & Facilitation
+
+If you get stuck or have questions during the exercise, ping the facilitators on your PR or directly on GitHub:
+- **Latera Tilahun** — [@Laterat](https://github.com/Laterat)
+- **Nahim** — [@nahim13](https://github.com/nahim13)
+
+

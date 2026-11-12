@@ -74,6 +74,14 @@ Additions, improvements, and new lab exercises are managed via standard pull req
 
 ---
 
+## Facilitation & Questions
+
+For questions, curriculum feedback, workshop facilitation, or PR reviews, contact the lead facilitators:
+- **Latera Tilahun** — [@Laterat](https://github.com/Laterat)
+- **Nahim** — [@nahim13](https://github.com/nahim13)
+
+---
+
 ## Zemen Technologies PLC
 
 - **Website:** [zemen.com.et](https://zemen.com.et)
