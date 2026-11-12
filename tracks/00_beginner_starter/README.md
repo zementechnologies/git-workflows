@@ -67,3 +67,4 @@ Files in a Git project exist in one of four states:
 | `git pull origin main` | Downloads newest changes from main | Before starting new work |
 
 Proceed to [lab.md](./lab.md) for step-by-step terminal practice.
+

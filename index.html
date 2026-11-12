@@ -30,6 +30,7 @@
 
       <nav class="nav-cluster">
         <a href="#tracks" class="nav-link-item">Curriculum</a>
+        <a href="#sandbox" class="nav-link-item">Sandbox</a>
         <a href="#simulator" class="nav-link-item">Simulator</a>
         <a href="#runbook" class="nav-link-item">Runbook</a>
         <a href="#standards" class="nav-link-item">Standards</a>
@@ -300,11 +301,94 @@
       </div>
     </section>
 
-    <!-- Section 2: Simulator -->
+    <!-- Section 2: Sandbox Challenge -->
+    <section id="sandbox" style="margin-bottom: 4rem;">
+      <div class="section-meta-header">
+        <div>
+          <span class="section-number">02 / SANDBOX EXERCISE</span>
+          <h2 class="section-heading">Contributor Roster Sandbox Challenge</h2>
+        </div>
+        <span class="section-note">Template repository: github.com/zementechnologies/git-sandbox</span>
+      </div>
+
+      <div class="sandbox-challenge-panel">
+        <div class="sandbox-steps-col">
+          <div class="sandbox-step-item">
+            <div class="step-header-label">Step 01 // Clone Template Repository</div>
+            <p class="step-instruction">Clone the official sandbox repository to your workstation:</p>
+            <div class="code-cell-wrapper">
+              <code>git clone https://github.com/zementechnologies/git-sandbox.git</code>
+              <button class="copy-btn-action" title="Copy command">Copy</button>
+            </div>
+          </div>
+
+          <div class="sandbox-step-item">
+            <div class="step-header-label">Step 02 // Cut an Isolated Feature Branch</div>
+            <p class="step-instruction">Never commit directly to main. Create your branch:</p>
+            <div class="code-cell-wrapper">
+              <code>git switch -c feat/add-&lt;your-name&gt;</code>
+              <button class="copy-btn-action" title="Copy command">Copy</button>
+            </div>
+          </div>
+
+          <div class="sandbox-step-item">
+            <div class="step-header-label">Step 03 // Copy Template & Fill Details</div>
+            <p class="step-instruction">Copy the profile template and add your name, role, and favorite Git command:</p>
+            <div class="code-cell-wrapper">
+              <code>cp contributors/_template.json contributors/&lt;your-username&gt;.json</code>
+              <button class="copy-btn-action" title="Copy command">Copy</button>
+            </div>
+          </div>
+
+          <div class="sandbox-step-item">
+            <div class="step-header-label">Step 04 // Run Local Automated Tests</div>
+            <p class="step-instruction">Validate your JSON formatting and required schema before committing:</p>
+            <div class="code-cell-wrapper">
+              <code>npm test</code>
+              <button class="copy-btn-action" title="Copy command">Copy</button>
+            </div>
+          </div>
+
+          <div class="sandbox-step-item">
+            <div class="step-header-label">Step 05 // Commit & Push Upstream</div>
+            <p class="step-instruction">Stage your profile and create a Conventional Commit:</p>
+            <div class="code-cell-wrapper">
+              <code>git add contributors/&lt;your-username&gt;.json &amp;&amp; git commit -m "feat(contributors): add &lt;your-name&gt; to roster" &amp;&amp; git push -u origin feat/add-&lt;your-name&gt;</code>
+              <button class="copy-btn-action" title="Copy command">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sandbox-preview-col">
+          <div>
+            <div class="sandbox-preview-title">Sample Contributor Payload</div>
+            <pre class="sandbox-json-box"><code>{
+  "name": "Your Name",
+  "github_username": "username",
+  "role": "Frontend / Backend / Intern",
+  "location": "Addis Ababa, Ethiopia",
+  "favorite_git_command": "git add -p",
+  "bio": "Building reliable software systems at Zemen Technologies."
+}</code></pre>
+            <p style="font-size: 0.85rem; color: var(--ink-secondary); line-height: 1.5;">
+              Every Pull Request submitted to the sandbox triggers an automated GitHub Actions CI workflow that tests your profile syntax and posts status checks.
+            </p>
+          </div>
+
+          <div class="sandbox-cta-box">
+            <a href="https://github.com/zementechnologies/git-sandbox" target="_blank" rel="noopener noreferrer" class="btn-solid" style="display: block; text-align: center;">
+              Open Sandbox on GitHub &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Simulator -->
     <section id="simulator" style="margin-bottom: 4rem;">
       <div class="section-meta-header">
         <div>
-          <span class="section-number">02 / SIMULATION</span>
+          <span class="section-number">03 / SIMULATION</span>
           <h2 class="section-heading">Interactive Branch Simulator</h2>
         </div>
         <span class="section-note">Visual commit graph execution</span>
@@ -345,7 +429,7 @@
     <section id="runbook" class="runbook-section">
       <div class="section-meta-header">
         <div>
-          <span class="section-number">03 / EMERGENCY RUNBOOK</span>
+          <span class="section-number">04 / EMERGENCY RUNBOOK</span>
           <h2 class="section-heading">Common Scenarios & Commands</h2>
         </div>
         <span class="section-note">Copy command with one click</span>
@@ -439,7 +523,7 @@
     <section id="standards">
       <div class="section-meta-header">
         <div>
-          <span class="section-number">04 / GOVERNANCE</span>
+          <span class="section-number">05 / GOVERNANCE</span>
           <h2 class="section-heading">Zemen Engineering Standards</h2>
         </div>
         <span class="section-note">Repository rules of engagement</span>

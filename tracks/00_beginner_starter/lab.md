@@ -121,3 +121,11 @@ git branch -d feat/add-payment-calculation
 - [x] Created an isolated feature branch with `git switch -c`.
 - [x] Wrote a conventional commit message.
 - [x] Merged feature branch into `main` and deleted the local feature branch.
+
+---
+
+### Capstone Challenge: Real Pull Request in the Sandbox
+Now that you have completed this local simulation, put your skills into action on GitHub!
+Complete the [Contributor Roster Challenge](../../exercises/01-sandbox-contributor-roster.md) in the official [zementechnologies/git-sandbox](https://github.com/zementechnologies/git-sandbox) template repository.
+
+

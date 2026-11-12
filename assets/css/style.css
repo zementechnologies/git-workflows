@@ -832,3 +832,87 @@ a {
 .footer-link-item:hover {
   color: var(--brand-crimson);
 }
+
+/* Sandbox Challenge Section */
+.sandbox-challenge-panel {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-card);
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+}
+
+@media (max-width: 900px) {
+  .sandbox-challenge-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sandbox-steps-col {
+  padding: 2rem;
+  border-right: 1px solid var(--border-strong);
+}
+
+@media (max-width: 900px) {
+  .sandbox-steps-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+}
+
+.sandbox-step-item {
+  margin-bottom: 1.5rem;
+}
+
+.sandbox-step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--brand-crimson);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.step-instruction {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.sandbox-preview-col {
+  padding: 2rem;
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sandbox-preview-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.sandbox-json-box {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--border-strong);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.sandbox-cta-box {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 1rem;
+}
+
