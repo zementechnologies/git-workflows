@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Track 06: AI-Assisted Git & Automation | Zemen Technologies</title>
+  <title>Track 06: AI-Assisted Git & Developer Tooling | Zemen Technologies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/slides-theme.css">
 </head>
 <body>
-  <a href="../index.html" class="slides-nav-home">
-    <i class="fas fa-arrow-left"></i> Zemen Hub
-  </a>
+  <a href="../index.html" class="slides-nav-home">&larr; Return to Index</a>
 
   <div class="reveal">
     <div class="slides">
@@ -21,46 +21,52 @@
       <!-- Slide 1: Title -->
       <section>
         <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span class="slide-badge">TRACK 06</span>
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">TRACK 06 // TOOLING</span>
         </div>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
-          ENGINEERING WORKFLOWS SERIES
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; color: #A51C30; font-weight: 600; margin-top: 40px; text-transform: uppercase; letter-spacing: 0.08em;">
+          Technical Curriculum
         </p>
-        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">AI-Assisted Git & Developer Tooling</h1>
-        <p style="font-size: 1.1em; color: #5A5652; max-width: 820px;">
-          Supercharge your workflow: Best practices when coding with AI agents, automated pre-commit hooks, and GitHub Actions PR pipelines.
+        <h1 style="font-size: 2.2em; margin: 0.2em 0 0.4em;">AI-Assisted Git & Developer Tooling</h1>
+        <p style="font-size: 1.05em; color: #524E48; max-width: 820px; line-height: 1.6;">
+          Maintaining rigorous version control while leveraging AI coding agents: diff verification protocols, client-side Git hooks, and CI quality gates.
         </p>
-        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
-          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 35 min</span>
-          <span><i class="fas fa-robot" style="color: #7C3AED;"></i> Modern Software Engineers</span>
-          <span><i class="fas fa-bolt"></i> Productivity & AI</span>
+        <div style="margin-top: 2em; display: flex; gap: 2em; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: #7E7870;">
+          <span>Duration: 35 min</span>
+          <span>Scope: Modern Software Engineers</span>
+          <span>Tooling: Hooks & Actions</span>
         </div>
       </section>
 
-      <!-- Slide 2: Coding with AI Agents Responsibly -->
+      <!-- Slide 2: AI Coding Hygiene -->
       <section>
         <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span>01 / 06 • AI HYGIENE</span>
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">01 / 05 // AI HYGIENE</span>
         </div>
-        <h2>Coding with AI Without Polluting Git</h2>
+        <h2>Coding with AI Without Polluting History</h2>
         <div class="cols-2" style="margin-top: 1.2em;">
-          <div class="card highlight">
-            <h4>The AI Pitfall</h4>
-            <p style="font-size: 0.85em; color: #5A5652;">
-              Letting an AI agent edit 30 files across your workspace and running <tt>git add . && git commit -m "ai changes"</tt>.
+          <div class="panel panel-accent">
+            <h4>The AI Anti-Pattern</h4>
+            <p style="font-size: 0.82em; color: #524E48;">
+              Prompting an AI to generate changes across 30 files and immediately running git add . &amp;&amp; git commit -m "AI changes".
             </p>
-            <p style="font-size: 0.8em; color: #A51C30; margin-top: 0.5em;">
-              Results in untraceable bugs, commented-out dead code, and unreviewable 1,500-line pull requests.
+            <p style="font-size: 0.78em; color: #A51C30; margin-top: 0.5em;">
+              Results in untraceable defects, hidden dead code, and unreviewable pull requests.
             </p>
           </div>
-          <div class="card emerald">
-            <h4>The Zemen AI Workflow</h4>
-            <ol style="font-size: 0.85em; color: #383430;">
-              <li><strong>Scope Prompts:</strong> Ask AI to address one specific module or test at a time.</li>
-              <li><strong>Diff Verification:</strong> Run <tt>git diff</tt> to scrutinize every change.</li>
-              <li><strong>Atomic Staging:</strong> Stage with <tt>git add -p</tt> to verify each hunk before committing.</li>
+          <div class="panel">
+            <h4>The Zemen Protocol</h4>
+            <ol style="font-size: 0.82em; color: #524E48;">
+              <li><strong>Scoped Prompts:</strong> Prompt AI on single functions, modules, or tests.</li>
+              <li><strong>Diff Verification:</strong> Run git diff to inspect every proposed line.</li>
+              <li><strong>Atomic Staging:</strong> Stage hunks with git add -p with descriptive commit messages.</li>
             </ol>
           </div>
         </div>
@@ -69,35 +75,39 @@
       <!-- Slide 3: Pre-commit Hooks with Husky -->
       <section>
         <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span>02 / 06 • AUTOMATION</span>
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">02 / 05 // AUTOMATION</span>
         </div>
-        <h2>Pre-commit Automation: Husky & Lint-staged</h2>
-        <p>Catch formatting errors, TypeScript build issues, and secrets BEFORE committing:</p>
-        <pre><code class="bash"># Initialize Husky
+        <h2>Pre-commit Quality Automation</h2>
+        <p style="font-size: 0.9em; color: #524E48;">Intercept formatting issues and secret leaks before commits occur:</p>
+        <pre><code class="bash"># Initialize client hooks
 npx husky init
-
-# Add lint-staged check on pre-commit
 echo "npx lint-staged" &gt; .husky/pre-commit</code></pre>
-        <div class="card navy" style="margin-top: 1em;">
-          <h4 style="color: #0C2340; font-size: 0.9em;">package.json Configuration:</h4>
-          <pre style="margin: 0.5em 0 0;"><code class="json">{
+        <div class="panel" style="margin-top: 1em;">
+          <h4 style="font-size: 0.85em;">package.json Configuration:</h4>
+          <pre style="margin: 0.4em 0 0;"><code class="json">{
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
+    "*.{ts,tsx,js}": ["eslint --fix", "prettier --write"],
     "*.{json,md,css}": ["prettier --write"]
   }
 }</code></pre>
         </div>
       </section>
 
-      <!-- Slide 4: GitHub Actions PR Matrix -->
+      <!-- Slide 4: CI Quality Gates -->
       <section>
         <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span>03 / 06 • CI/CD</span>
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">03 / 05 // CI GATES</span>
         </div>
-        <h2>Automated PR Verification Pipeline</h2>
-        <p>Every PR opened against <tt>main</tt> must pass automated status checks:</p>
+        <h2>Automated PR Verification</h2>
+        <p style="font-size: 0.9em; color: #524E48;">Every pull request against main must satisfy status gates:</p>
         <pre><code class="yaml">name: CI Quality Gate
 on:
   pull_request:
@@ -118,47 +128,27 @@ jobs:
       - run: npm test -- --coverage</code></pre>
       </section>
 
-      <!-- Slide 5: PR Bot Automations -->
+      <!-- Slide 5: Summary & Completion -->
       <section>
         <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span>04 / 06 • TEAM PRODUCTIVITY</span>
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">04 / 05 // COMPLETE</span>
         </div>
-        <h2>Bots That Keep Teams Fast</h2>
-        <div class="cols-3" style="font-size: 0.85em; margin-top: 1.2em;">
-          <div class="card">
-            <h4>Auto-Assigner & Labeler</h4>
-            <p>Automatically tags PRs based on touched directories (e.g. <tt>area: frontend</tt>, <tt>area: api</tt>) and assigns reviewers.</p>
-          </div>
-          <div class="card highlight">
-            <h4>Conventional PR Linter</h4>
-            <p>Ensures PR titles conform to <tt>feat:</tt>, <tt>fix:</tt>, <tt>chore:</tt> for automated release note generation.</p>
-          </div>
-          <div class="card emerald">
-            <h4>Code Coverage Gate</h4>
-            <p>Blocks merging if test coverage drops below team thresholds (e.g., &gt; 80%).</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 6: Conclusion & Certification -->
-      <section>
-        <div class="slide-header">
-          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
-          <span>05 / 06 • WRAP UP</span>
-        </div>
-        <h2>You are Ready to Ship!</h2>
-        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
-          <h3>Complete the Zemen Git Curriculum</h3>
-          <p>
-            Review all track guides, practice scenarios in the interactive visual playground, and contribute improvements to this open-source curriculum.
+        <h2>Curriculum Complete</h2>
+        <div class="panel panel-accent" style="margin-top: 1.5em; padding: 25px;">
+          <h3 style="color: #A51C30;">Ready to Apply These Standards</h3>
+          <p style="font-size: 0.9em; color: #524E48; line-height: 1.6;">
+            Review all track guides, test your command instincts in the interactive simulator, and follow these practices across all Zemen repositories.
           </p>
           <div style="margin-top: 1.5em; display: flex; gap: 1em;">
-            <a href="../index.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
-              <i class="fas fa-home"></i> Back to Zemen Learning Hub
+            <a href="../index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; padding: 7px 14px; background: #A51C30; color: #fff; text-decoration: none;">
+              Return to Engineering Portal
             </a>
-            <a href="https://github.com/zementechnologies/git-workflows" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
-              <i class="fab fa-github"></i> View on GitHub
+            <a href="https://github.com/zementechnologies/git-workflows" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; padding: 7px 14px; background: #181614; color: #fff; text-decoration: none;">
+              View on GitHub
             </a>
           </div>
         </div>
@@ -176,10 +166,9 @@ jobs:
       controls: true,
       progress: true,
       center: true,
-      transition: 'slide',
+      transition: 'none',
       plugins: [ RevealHighlight ]
     });
   </script>
 </body>
 </html>
-
