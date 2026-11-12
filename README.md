@@ -2,7 +2,7 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Site-181614?style=flat-square)](https://zementechnologies.github.io/git-workflows/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-A51C30?style=flat-square)](LICENSE)
-[![Curriculum](https://img.shields.io/badge/Tracks-6%20Specialized%20Tracks-181614?style=flat-square)](#curriculum-tracks)
+[![Curriculum](https://img.shields.io/badge/Tracks-7%20Specialized%20Tracks-181614?style=flat-square)](#curriculum-tracks)
 
 The official version control specifications, collaboration guidelines, and technical curriculum for software engineers at **Zemen Technologies PLC**.
 
@@ -30,6 +30,7 @@ This repository provides an enterprise-ready engineering playbook for software t
 
 | Track | Title | Target Audience | Slide Deck | Guide & Lab |
 |:---:|:---|:---|:---:|:---:|
+| **00** | **Git from Scratch (Zero to First PR)** | Absolute Beginners, Junior Devs, Interns | [Launch Deck](https://zementechnologies.github.io/git-workflows/slides/00-beginner-starter.html) | [Guide](tracks/00_beginner_starter/README.md) / [Lab](tracks/00_beginner_starter/lab.md) |
 | **01** | **Git Foundations & Mental Model** | All Onboarding Engineers, Interns | [Launch Deck](https://zementechnologies.github.io/git-workflows/slides/01-foundations.html) | [Guide](tracks/01_git_foundations/README.md) / [Lab](tracks/01_git_foundations/lab.md) |
 | **02** | **Team Workflows & Collaboration** | Product & Engineering Teams | [Launch Deck](https://zementechnologies.github.io/git-workflows/slides/02-collaboration.html) | [Guide](tracks/02_collaboration_workflows/README.md) / [Lab](tracks/02_collaboration_workflows/lab.md) |
 | **03** | **Frontend & Web Development** | Frontend, Fullstack, UI/UX Engineers | [Launch Deck](https://zementechnologies.github.io/git-workflows/slides/03-frontend.html) | [Guide](tracks/03_frontend_web/README.md) / [Lab](tracks/03_frontend_web/lab.md) |

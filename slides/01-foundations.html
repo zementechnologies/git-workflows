@@ -48,7 +48,7 @@
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">01 / 07 // MODEL</span>
+          <span class="slide-badge">01 / 11 // MODEL</span>
         </div>
         <h2>Mental Models: Deltas vs Snapshots</h2>
         <div class="cols-2" style="margin-top: 1.5em;">
@@ -80,7 +80,7 @@
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">02 / 07 // TREES</span>
+          <span class="slide-badge">02 / 11 // TREES</span>
         </div>
         <h2>The Three Trees of Git</h2>
         <p style="font-size: 0.95em; color: #524E48;">Where changes reside during active development:</p>
@@ -116,7 +116,7 @@
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">03 / 07 // OBJECTS</span>
+          <span class="slide-badge">03 / 11 // OBJECTS</span>
         </div>
         <h2>Object Primitives in .git/objects/</h2>
         <div class="cols-2" style="margin-top: 1em;">
@@ -144,14 +144,49 @@ feat(auth): add JWT bearer validation</code></pre>
         </div>
       </section>
 
-      <!-- Slide 5: Branches are Just Pointers -->
+      <!-- Slide 5: Diff Deep Dive -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">04 / 07 // POINTERS</span>
+          <span class="slide-badge">04 / 11 // DIFFS</span>
+        </div>
+        <h2>Understanding Diffs Across Trees</h2>
+        <div class="cols-3" style="font-size: 0.82em; margin-top: 1.2em;">
+          <div class="panel">
+            <h4><tt>git diff</tt></h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              Compares your <strong>Working Tree</strong> against the <strong>Staging Area</strong>. Shows uncommitted edits you have not staged yet.
+            </p>
+          </div>
+          <div class="panel panel-accent">
+            <h4 style="color: #A51C30;"><tt>git diff --staged</tt></h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              Compares the <strong>Staging Area</strong> against the <strong>Last Commit (HEAD)</strong>. Shows the exact changes about to be committed!
+            </p>
+          </div>
+          <div class="panel">
+            <h4><tt>git diff HEAD~1</tt></h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              Compares the <strong>Working Tree</strong> against <strong>one commit prior</strong>. Shows all changes made since the parent commit.
+            </p>
+          </div>
+        </div>
+        <pre style="margin-top: 1.2em;"><code class="bash"># Golden habit before committing:
+git diff --staged
+# If you see unintended files (like .env or debug logs), unstage them before committing!</code></pre>
+      </section>
+
+      <!-- Slide 6: Branches are Just Pointers -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">05 / 11 // POINTERS</span>
         </div>
         <h2>Branches: 41-Byte Reference Files</h2>
         <div class="cols-2">
@@ -175,14 +210,126 @@ ref: refs/heads/main</code></pre>
         </div>
       </section>
 
-      <!-- Slide 6: Essential Daily Commands -->
+      <!-- Slide 7: Detached HEAD State -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">05 / 07 // COMMANDS</span>
+          <span class="slide-badge">06 / 11 // HEAD</span>
+        </div>
+        <h2>What Does "Detached HEAD" Mean?</h2>
+        <div class="cols-2">
+          <div>
+            <p style="font-size: 0.9em; color: #524E48;">
+              Normally, <tt>HEAD</tt> points to a branch name (<tt>ref: refs/heads/main</tt>).
+            </p>
+            <p style="font-size: 0.85em; color: #524E48; margin-top: 0.5em;">
+              If you check out a specific commit hash directly (<tt>git checkout a1b2c3</tt>), <tt>HEAD</tt> points to that raw commit instead of a branch.
+            </p>
+            <div class="note-box warning" style="margin-top: 0.8em;">
+              Any commits made in detached HEAD will become orphaned if you switch away without creating a branch!
+            </div>
+          </div>
+          <div>
+            <pre><code class="bash"># How you get into detached HEAD:
+git checkout 4b825dc
+
+# How to safely save work done in detached HEAD:
+git switch -c my-rescued-branch
+
+# How to return to normal without saving:
+git switch main</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Fast-Forward vs 3-Way Merge -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">07 / 11 // MERGES</span>
+        </div>
+        <h2>Merge Anatomy: Fast-Forward vs 3-Way</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="panel">
+            <h4>Fast-Forward Merge</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              Occurs when <tt>main</tt> has NOT changed since you cut your feature branch.
+            </p>
+            <p style="font-size: 0.8em; color: #7E7870; margin-top: 0.5em;">
+              Git simply moves the <tt>main</tt> pointer forward to the tip of your feature. No merge commit is created.
+            </p>
+            <pre style="margin-top: 0.5em;"><code class="bash">main:    A --- B
+                 \
+feature:          C --- D
+# FF Result: A --- B --- C --- D (main)</code></pre>
+          </div>
+          <div class="panel panel-accent">
+            <h4>3-Way Merge Commit</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              Occurs when both <tt>main</tt> and your feature branch have new commits (diverged).
+            </p>
+            <p style="font-size: 0.8em; color: #7E7870; margin-top: 0.5em;">
+              Git finds the common ancestor and creates a new merge commit with two parents.
+            </p>
+            <pre style="margin-top: 0.5em;"><code class="bash">main:    A --- B --- E
+                 \     \
+feature:          C --- M (Merge commit)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 9: Remote Tracking Branches -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">08 / 11 // TRACKING</span>
+        </div>
+        <h2>Local vs Remote-Tracking Branches</h2>
+        <p style="font-size: 0.9em; color: #524E48;">Git maintains three separate branch perspectives:</p>
+        <div class="cols-3" style="font-size: 0.82em; margin-top: 1.2em;">
+          <div class="panel">
+            <h4>1. Local Branch (<tt>main</tt>)</h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              The branch pointer on your workstation that moves when you run <tt>git commit</tt>.
+            </p>
+          </div>
+          <div class="panel panel-accent">
+            <h4>2. Remote Tracking (<tt>origin/main</tt>)</h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              A read-only pointer on your machine recording where <tt>main</tt> was on GitHub the last time you ran <tt>git fetch</tt>.
+            </p>
+          </div>
+          <div class="panel">
+            <h4>3. Server Branch</h4>
+            <p style="color: #524E48; margin-top: 0.4em;">
+              The live state residing on GitHub servers across the network.
+            </p>
+          </div>
+        </div>
+        <pre style="margin-top: 1em;"><code class="bash"># Update your local knowledge of GitHub without modifying your files:
+git fetch origin
+
+# Compare your local main against GitHub's main:
+git log main..origin/main --oneline</code></pre>
+      </section>
+
+      <!-- Slide 10: Essential Daily Commands -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">09 / 11 // OPERATIONS</span>
         </div>
         <h2>Standard Operations</h2>
         <pre><code class="bash"># Check workspace status cleanly
@@ -201,14 +348,14 @@ git switch -c feat/billing-portal
 git log --oneline --graph --decorate -n 10</code></pre>
       </section>
 
-      <!-- Slide 7: Next Steps & Lab -->
+      <!-- Slide 11: Summary & Lab -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">06 / 07 // PRACTICE</span>
+          <span class="slide-badge">10 / 11 // PRACTICE</span>
         </div>
         <h2>Track 01 Verification Lab</h2>
         <div class="panel panel-accent" style="margin-top: 1.5em; padding: 25px;">

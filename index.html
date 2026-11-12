@@ -58,11 +58,11 @@
       <div class="hero-aside">
         <div class="aside-title">Curriculum Scope</div>
         <p class="aside-text">
-          Six tracks covering core directed acyclic graph internals, pull request hygiene, dependency collision surgery, release tagging, and disaster recovery.
+          Seven tracks spanning absolute beginner fundamentals, directed acyclic graph internals, pull request hygiene, dependency collision surgery, release tagging, and disaster recovery.
         </p>
         <div class="aside-actions">
           <a href="#tracks" class="btn-solid">Explore Tracks</a>
-          <a href="slides/01-foundations.html" class="btn-outline">Track 01 Deck</a>
+          <a href="slides/00-beginner-starter.html" class="btn-outline">Beginner Deck</a>
         </div>
       </div>
     </div>
@@ -85,6 +85,7 @@
       <div class="filter-container">
         <div class="filter-group">
           <button class="filter-btn active" data-filter="all">All Tracks</button>
+          <button class="filter-btn" data-filter="beginner">Beginner</button>
           <button class="filter-btn" data-filter="core">Foundations</button>
           <button class="filter-btn" data-filter="team">Team Flow</button>
           <button class="filter-btn" data-filter="web">Web & Frontend</button>
@@ -98,6 +99,35 @@
 
       <!-- Editorial Tracks List -->
       <div class="tracks-editorial-list">
+
+        <!-- Track 00: Absolute Beginner -->
+        <article class="track-row" data-category="beginner">
+          <div class="track-col-index">
+            <div>
+              <div class="track-number-tag">Track 00 // Beginner</div>
+              <div class="track-audience">Absolute beginners, junior developers, and new tech interns.</div>
+            </div>
+            <div class="track-time">Duration: 45 min</div>
+          </div>
+          <div class="track-col-body">
+            <h3 class="track-name">Git from Scratch: Zero to First PR</h3>
+            <p class="track-synopsis">
+              Start here if you are new to version control. Understand why Git exists, the difference between Git and GitHub, the four file states (untracked, modified, staged, committed), how branches work, and how to submit your very first pull request.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-label">Version Control Basics</span>
+              <span class="tag-label">Git vs GitHub</span>
+              <span class="tag-label">Staging Area</span>
+              <span class="tag-label">First Pull Request</span>
+              <span class="tag-label">Merge Conflicts 101</span>
+            </div>
+          </div>
+          <div class="track-col-actions">
+            <a href="slides/00-beginner-starter.html" class="btn-deck">Launch Slide Deck</a>
+            <a href="tracks/00_beginner_starter/lab.md" class="btn-sub-link">Terminal Lab</a>
+            <a href="tracks/00_beginner_starter/README.md" class="btn-sub-link">Beginner Guide</a>
+          </div>
+        </article>
 
         <!-- Track 01 -->
         <article class="track-row" data-category="core">

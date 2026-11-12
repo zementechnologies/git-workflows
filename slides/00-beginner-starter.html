@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 00: Absolute Beginner — From Zero to First PR | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">&larr; Return to Index</a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">TRACK 00 // BEGINNER</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; color: #A51C30; font-weight: 600; margin-top: 40px; text-transform: uppercase; letter-spacing: 0.08em;">
+          Foundational Curriculum
+        </p>
+        <h1 style="font-size: 2.1em; margin: 0.2em 0 0.4em;">Git From Scratch: Zero to First Pull Request</h1>
+        <p style="font-size: 1.05em; color: #524E48; max-width: 840px; line-height: 1.6;">
+          An approachable, comprehensive guide for beginners. Understand what version control is, how Git differs from GitHub, the four file states, and how to submit your first contribution with confidence.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 2em; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: #7E7870;">
+          <span>Duration: 45 min</span>
+          <span>Target: Absolute Beginners, Junior Devs, Interns</span>
+          <span>Prerequisites: None</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: The Problem We Are Solving -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">01 / 15 // WHY GIT</span>
+        </div>
+        <h2>The Chaos of Coding Without Version Control</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="panel panel-accent">
+            <h3 style="color: #A51C30;">The Old Folder Nightmare</h3>
+            <p style="font-size: 0.85em; color: #524E48;">Before version control, people saved copies like this:</p>
+            <pre style="margin-top: 0.5em;"><code class="text">project_v1/
+project_v2_final/
+project_v2_final_FINAL/
+project_v2_final_FINAL_aaron_edit.zip</code></pre>
+            <p style="font-size: 0.8em; color: #7E7870; margin-top: 0.5em;">
+              No one knows who changed what line, why a change was made, or how to undo an error without breaking everything.
+            </p>
+          </div>
+          <div class="panel">
+            <h3 style="color: #181614;">What Git Provides</h3>
+            <ul style="font-size: 0.85em; color: #524E48; line-height: 1.6;">
+              <li><strong>Time Machine:</strong> Travel to any point in the history of your codebase.</li>
+              <li><strong>Attribution:</strong> Know exactly who wrote every line, when, and why.</li>
+              <li><strong>Parallel Universes:</strong> Experiment in isolated branches without breaking production.</li>
+              <li><strong>Safe Merging:</strong> Combine work from 50 engineers into one unified project.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Git vs GitHub -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">02 / 15 // CONCEPTS</span>
+        </div>
+        <h2>Git vs GitHub: The Crucial Difference</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="panel">
+            <h3 style="color: #181614;">Git (The Tool)</h3>
+            <p style="font-size: 0.88em; color: #524E48;">
+              A command-line software program running locally on your computer.
+            </p>
+            <ul style="font-size: 0.82em; color: #524E48; margin-top: 0.6em; line-height: 1.6;">
+              <li>Runs completely offline without an internet connection.</li>
+              <li>Tracks file snapshots, branches, and commit histories on your local disk.</li>
+              <li>Created by Linus Torvalds in 2005. Free and open source.</li>
+            </ul>
+          </div>
+          <div class="panel panel-accent">
+            <h3 style="color: #A51C30;">GitHub (The Cloud Platform)</h3>
+            <p style="font-size: 0.88em; color: #524E48;">
+              A cloud hosting service and web application for Git repositories.
+            </p>
+            <ul style="font-size: 0.82em; color: #524E48; margin-top: 0.6em; line-height: 1.6;">
+              <li>Hosts remote copies of your repositories in the cloud.</li>
+              <li>Provides web UI for Pull Requests, Code Reviews, and Issue Tracking.</li>
+              <li>Runs automated testing (CI/CD) and team permission management.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: The Four File States -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">03 / 15 // LIFECYCLE</span>
+        </div>
+        <h2>The Four States of Any File in Git</h2>
+        <p style="font-size: 0.9em; color: #524E48;">At any given second, every file in your folder is in one of these four states:</p>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div class="panel">
+            <h4>1. Untracked</h4>
+            <p style="font-size: 0.82em; color: #524E48;">
+              A brand new file you created that Git has never seen before. Git will not record it until you tell it to track it.
+            </p>
+            <h4 style="margin-top: 1em;">2. Modified</h4>
+            <p style="font-size: 0.82em; color: #524E48;">
+              A file Git already tracks that you edited in VSCode. You have changes on disk that are not yet staged.
+            </p>
+          </div>
+          <div class="panel panel-accent">
+            <h4 style="color: #A51C30;">3. Staged</h4>
+            <p style="font-size: 0.82em; color: #524E48;">
+              You ran <tt>git add</tt>. The file is packaged and ready to be sealed into the next snapshot commit.
+            </p>
+            <h4 style="margin-top: 1em; color: #181614;">4. Committed</h4>
+            <p style="font-size: 0.82em; color: #524E48;">
+              You ran <tt>git commit</tt>. The snapshot is safely and permanently stored in your local Git database.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Setup & Identity -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">04 / 15 // CONFIG</span>
+        </div>
+        <h2>One-Time Setup on Your Machine</h2>
+        <p style="font-size: 0.9em; color: #524E48;">Tell Git who you are so your commits attribute to your Zemen profile:</p>
+        <pre><code class="bash"># Set your display name (used in commit author logs)
+git config --global user.name "Your Full Name"
+
+# Set your corporate email address
+git config --global user.email "yourname@zemen.com.et"
+
+# Set the modern default branch name to 'main'
+git config --global init.defaultBranch main
+
+# Set your default text editor to VSCode
+git config --global core.editor "code --wait"
+
+# Verify your configuration
+git config --list</code></pre>
+      </section>
+
+      <!-- Slide 6: Getting a Repository -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">05 / 15 // STARTING</span>
+        </div>
+        <h2>How to Start: git init vs git clone</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="panel">
+            <h4>Option A: Brand New Project (<tt>git init</tt>)</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              When starting a brand new application from an empty folder on your computer:
+            </p>
+            <pre style="margin-top: 0.5em;"><code class="bash">mkdir my-new-project
+cd my-new-project
+git init
+# Creates hidden .git folder</code></pre>
+          </div>
+          <div class="panel panel-accent">
+            <h4>Option B: Existing Team Project (<tt>git clone</tt>)</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              When joining an existing project already hosted on Zemen Technologies GitHub:
+            </p>
+            <pre style="margin-top: 0.5em;"><code class="bash">git clone https://github.com/zementechnologies/git-workflows.git
+cd git-workflows
+# Copies full project & history</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Daily Habit: git status -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">06 / 15 // STATUS</span>
+        </div>
+        <h2>The First Command You Should Always Run: git status</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          Never type commands blindly. <tt>git status</tt> tells you what branch you are on and what has changed:
+        </p>
+        <pre><code class="bash">$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  modified:   src/app/page.tsx
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+  src/components/Header.tsx
+
+# Quick pro-tip: use compact status
+$ git status -s
+ M src/app/page.tsx
+?? src/components/Header.tsx</code></pre>
+        <div class="note-box" style="margin-top: 0.5em;">
+          <strong>Tip:</strong> <tt>??</tt> means untracked file, <tt>M</tt> means modified file.
+        </div>
+      </section>
+
+      <!-- Slide 8: Staging Changes -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">07 / 15 // STAGING</span>
+        </div>
+        <h2>Staging Changes: Packing Your Suitcase</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          Think of a commit as sending a package in the mail. Staging (<tt>git add</tt>) is putting specific items into the box before sealing it.
+        </p>
+        <pre style="margin-top: 1em;"><code class="bash"># Stage a single specific file (RECOMMENDED)
+git add src/components/Header.tsx
+
+# Stage multiple related files
+git add src/app/page.tsx src/styles/main.css
+
+# Stage individual chunks of a file interactively (BEST PRACTICE)
+git add -p src/components/Navbar.tsx
+
+# Unstage a file if you added it by accident
+git restore --staged src/secret.env</code></pre>
+        <div class="note-box warning" style="margin-top: 0.6em;">
+          <strong>Caution for beginners:</strong> Avoid running <tt>git add .</tt> blindly without checking <tt>git status</tt> first. You might accidentally stage sensitive files or build folders.
+        </div>
+      </section>
+
+      <!-- Slide 9: Committing Snapshots -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">08 / 15 // COMMITTING</span>
+        </div>
+        <h2>Making a Commit: Sealing the Box</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          A commit permanently saves your staged files as a new checkpoint in history:
+        </p>
+        <pre><code class="bash"># Create commit with an imperative message
+git commit -m "feat(auth): add login form validation"
+
+# Output from Git:
+[feat/login 4f82c19] feat(auth): add login form validation
+ 2 files changed, 48 insertions(+), 3 deletions(-)</code></pre>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div class="panel panel-accent">
+            <h4>What a Commit Contains:</h4>
+            <ul style="font-size: 0.82em; color: #524E48; line-height: 1.5;">
+              <li>A unique 40-character SHA-1 hash (e.g. 4f82c19...)</li>
+              <li>Your name and email as author</li>
+              <li>Exact date and time stamp</li>
+              <li>Reference to the previous commit (parent)</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h4>Golden Rule:</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              Make commits <strong>atomic</strong>: one logical task per commit. Do not combine database migrations, UI changes, and CSS fixes into a single commit!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10: Commit Messages -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">09 / 15 // MESSAGES</span>
+        </div>
+        <h2>Writing Messages Future You Will Thank You For</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="panel panel-accent">
+            <h4>Bad Commit Messages (Avoid!):</h4>
+            <pre style="margin-top: 0.4em;"><code class="text">git commit -m "updates"
+git commit -m "fixed stuff"
+git commit -m "asdf"
+git commit -m "trying again"
+git commit -m "final test"</code></pre>
+            <p style="font-size: 0.8em; color: #A51C30; margin-top: 0.5em;">
+              Gives zero clues when a bug appears 3 months later.
+            </p>
+          </div>
+          <div class="panel">
+            <h4>Good Conventional Messages:</h4>
+            <pre style="margin-top: 0.4em;"><code class="text">git commit -m "feat(cart): calculate VAT for Ethiopian Birr"
+git commit -m "fix(nav): prevent drawer closing on scroll"
+git commit -m "docs(readme): add local postgres instructions"
+git commit -m "refactor(api): extract payment client into service"</code></pre>
+            <p style="font-size: 0.8em; color: #524E48; margin-top: 0.5em;">
+              Clear prefix, clear scope, explains exact intent.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 11: Branching Explained -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">10 / 15 // BRANCHES</span>
+        </div>
+        <h2>What is a Branch and Why You Must Use Them</h2>
+        <div class="cols-2">
+          <div>
+            <p style="font-size: 0.9em; color: #524E48;">
+              <strong>Never commit directly to <tt>main</tt>.</strong> Always work inside your own branch!
+            </p>
+            <p style="font-size: 0.85em; color: #7E7870; margin-top: 0.6em;">
+              Think of a branch as your private sandbox. If your experiment completely fails, you can delete it without hurting anyone else's code.
+            </p>
+          </div>
+          <div>
+            <pre><code class="bash"># 1. Create and switch to your feature branch
+git switch -c feat/telebirr-qr-code
+
+# 2. Check which branch you are on
+git branch
+# Output:
+# * feat/telebirr-qr-code
+#   main
+
+# 3. Switch back to main when needed
+git switch main</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 12: Working with Remotes -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">11 / 15 // REMOTES</span>
+        </div>
+        <h2>Working with GitHub: origin, push & pull</h2>
+        <div class="cols-2">
+          <div class="panel">
+            <h4>What is <tt>origin</tt>?</h4>
+            <p style="font-size: 0.85em; color: #524E48;">
+              <tt>origin</tt> is simply a nickname Git gives to the remote repository on GitHub where you cloned your code.
+            </p>
+            <pre style="margin-top: 0.6em;"><code class="bash"># Check your remote URL
+git remote -v
+# origin https://github.com/zementechnologies/...</code></pre>
+          </div>
+          <div class="panel panel-accent">
+            <h4>Pushing & Pulling:</h4>
+            <pre><code class="bash"># Push your new branch to GitHub for the first time
+git push -u origin feat/telebirr-qr-code
+
+# On subsequent pushes:
+git push
+
+# Download latest team updates from main:
+git switch main
+git pull origin main</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 13: What is a Pull Request? -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">12 / 15 // PULL REQUESTS</span>
+        </div>
+        <h2>What is a Pull Request (PR)?</h2>
+        <div class="cols-2">
+          <div>
+            <p style="font-size: 0.9em; color: #524E48;">
+              A Pull Request is a formal proposal: <em>"Hey team, I finished this feature in my branch. Please review my code before we merge it into main."</em>
+            </p>
+            <ol style="font-size: 0.85em; color: #524E48; margin-top: 1em; line-height: 1.6;">
+              <li>Push your branch to GitHub.</li>
+              <li>Click <strong>"Compare & pull request"</strong> on GitHub.</li>
+              <li>Write a clear summary of what you did.</li>
+              <li>Automated CI tests verify that your code compiles.</li>
+              <li>A teammate approves your code & merges it!</li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h4>Anatomy of a Great PR:</h4>
+            <pre><code class="markdown">## What Changed
+Added CBE Birr QR code generator component.
+
+## How to Test
+1. Go to `/checkout`
+2. Select "CBE Birr"
+3. Scan QR code and verify payment confirmation screen.</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 14: Merge Conflicts Explained Plainly -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">13 / 15 // CONFLICTS</span>
+        </div>
+        <h2>Merge Conflicts: Do Not Panic!</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          A merge conflict only happens when you and another developer edit <strong>the exact same lines of the same file</strong>. Git stops and asks: <em>Which version do you want?</em>
+        </p>
+        <pre><code class="typescript">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Current version on main)
+const taxRate = 0.15; // 15% VAT
+=======
+const taxRate = 0.18; // New VAT rate from finance
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat/update-tax (Your version)</code></pre>
+        <div class="cols-2" style="margin-top: 0.8em; font-size: 0.85em;">
+          <div class="panel">
+            <strong>How to resolve it:</strong>
+            <ol style="margin-top: 0.4em; padding-left: 1.2em;">
+              <li>Open the file in VSCode.</li>
+              <li>Delete the markers (<tt>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</tt>, <tt>=======</tt>, <tt>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</tt>).</li>
+              <li>Keep the correct code.</li>
+              <li>Run <tt>git add &lt;file&gt; && git commit</tt>. Done!</li>
+            </ol>
+          </div>
+          <div class="panel panel-accent">
+            <strong>VSCode Helper:</strong><br>
+            VSCode provides buttons above the conflict: <em>"Accept Current Change"</em>, <em>"Accept Incoming Change"</em>, or <em>"Accept Both"</em>.
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 15: Stashing -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">14 / 15 // STASHING</span>
+        </div>
+        <h2>The Safety Drawer: git stash</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          Scenario: You are halfway through coding a feature, and your manager asks you to urgently fix an emergency bug on <tt>main</tt>.
+        </p>
+        <pre><code class="bash"># 1. Stash your unfinished work into a safe drawer:
+git stash push -m "WIP: halfway through payment UI"
+
+# 2. Your workspace is now 100% clean! Switch to main and fix bug:
+git switch main
+# fix bug, commit, push
+
+# 3. Switch back to your feature branch and pull your work back out:
+git switch feat/my-feature
+git stash pop
+# All your uncommitted edits are restored exactly as you left them!</code></pre>
+      </section>
+
+      <!-- Slide 16: Beginner Glossary & Next Steps -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">15 / 15 // GLOSSARY</span>
+        </div>
+        <h2>Beginner Cheat-Sheet Glossary</h2>
+        <div class="cols-2" style="font-size: 0.8em;">
+          <div>
+            <ul style="line-height: 1.6;">
+              <li><strong>Repository (Repo):</strong> The folder containing your project and all its Git history.</li>
+              <li><strong>Commit:</strong> A permanent snapshot of your project with a message and timestamp.</li>
+              <li><strong>Branch:</strong> A lightweight pointer to work independently on a feature.</li>
+              <li><strong>HEAD:</strong> Pointer representing what you currently have open on your screen.</li>
+            </ul>
+          </div>
+          <div>
+            <ul style="line-height: 1.6;">
+              <li><strong>Remote (origin):</strong> The cloud copy of the repository hosted on GitHub.</li>
+              <li><strong>Pull Request (PR):</strong> A proposal to merge your branch into main.</li>
+              <li><strong>Diff:</strong> The exact lines added (green) or removed (red).</li>
+              <li><strong>Stash:</strong> A temporary drawer to hold uncommitted changes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+          <a href="../index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; padding: 7px 14px; background: #A51C30; color: #fff; text-decoration: none;">
+            Return to Learning Hub
+          </a>
+          <a href="01-foundations.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; padding: 7px 14px; background: #181614; color: #fff; text-decoration: none;">
+            Track 01: Deep Foundations &rarr;
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'none',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

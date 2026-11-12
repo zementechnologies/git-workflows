@@ -41,14 +41,60 @@
         </div>
       </section>
 
-      <!-- Slide 2: Workflow Models Comparison -->
+      <!-- Slide 2: The 6-Step Feature Lifecycle -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">01 / 06 // MODELS</span>
+          <span class="slide-badge">01 / 09 // LIFECYCLE</span>
+        </div>
+        <h2>The 6-Step Feature Lifecycle</h2>
+        <div class="cols-3" style="font-size: 0.82em; margin-top: 1.2em;">
+          <div class="panel">
+            <h4>1. Pull Latest Main</h4>
+            <p style="color: #524E48;">Always start your work from the latest validated production state.</p>
+            <code style="display: block; margin-top: 0.5em;">git switch main && git pull</code>
+          </div>
+          <div class="panel panel-accent">
+            <h4>2. Cut Feature Branch</h4>
+            <p style="color: #524E48;">Create a branch with the proper ticket and type prefix.</p>
+            <code style="display: block; margin-top: 0.5em;">git switch -c feat/ZM-40-auth</code>
+          </div>
+          <div class="panel">
+            <h4>3. Atomic Commits</h4>
+            <p style="color: #524E48;">Commit small, verifiable units using Conventional Commits.</p>
+            <code style="display: block; margin-top: 0.5em;">git commit -m "feat: ..."</code>
+          </div>
+        </div>
+        <div class="cols-3" style="font-size: 0.82em; margin-top: 1em;">
+          <div class="panel">
+            <h4>4. Push & Open PR</h4>
+            <p style="color: #524E48;">Push branch to GitHub and open a detailed Pull Request.</p>
+            <code style="display: block; margin-top: 0.5em;">git push -u origin feat/...</code>
+          </div>
+          <div class="panel panel-accent">
+            <h4>5. Peer Review & CI</h4>
+            <p style="color: #524E48;">CI passes automated tests; peer reviews and approves diff.</p>
+            <code style="display: block; margin-top: 0.5em;">1 Approval Required</code>
+          </div>
+          <div class="panel">
+            <h4>6. Squash & Delete</h4>
+            <p style="color: #524E48;">Squash-merge into main and immediately delete feature branch.</p>
+            <code style="display: block; margin-top: 0.5em;">git branch -d feat/...</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Workflow Models Comparison -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">02 / 09 // MODELS</span>
         </div>
         <h2>Branching Models Compared</h2>
         <div class="cols-3" style="margin-top: 1.2em;">
@@ -76,14 +122,14 @@
         </div>
       </section>
 
-      <!-- Slide 3: Branch Naming Conventions -->
+      <!-- Slide 4: Branch Taxonomy -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">02 / 06 // TAXONOMY</span>
+          <span class="slide-badge">03 / 09 // TAXONOMY</span>
         </div>
         <h2>Zemen Branch Taxonomy</h2>
         <p style="font-size: 0.9em; color: #524E48;">All branches must follow: <tt>&lt;type&gt;/&lt;ticket-id&gt;-&lt;short-desc&gt;</tt></p>
@@ -112,14 +158,14 @@ git switch -c chore/upgrade-nextjs-15
         </div>
       </section>
 
-      <!-- Slide 4: Conventional Commits -->
+      <!-- Slide 5: Conventional Commits -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">03 / 06 // COMMITS</span>
+          <span class="slide-badge">04 / 09 // COMMITS</span>
         </div>
         <h2>Conventional Commits Specification</h2>
         <pre><code class="markdown">&lt;type&gt;(&lt;optional-scope&gt;): &lt;imperative short description&gt;
@@ -141,14 +187,50 @@ git switch -c chore/upgrade-nextjs-15
         </div>
       </section>
 
-      <!-- Slide 5: Anatomy of a Great PR -->
+      <!-- Slide 6: Keeping Feature Branches Updated -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">04 / 06 // REVIEWS</span>
+          <span class="slide-badge">05 / 09 // REBASING</span>
+        </div>
+        <h2>Updating Behind Branches with Rebase</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          While you worked on your branch, teammates merged 5 other PRs into <tt>main</tt>. How to update cleanly:
+        </p>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div class="panel panel-accent">
+            <h4>Recommended: Rebase on Main</h4>
+            <pre><code class="bash"># Fetch newest commits from GitHub
+git fetch origin
+
+# Replay your commits onto newest main
+git rebase origin/main</code></pre>
+            <p style="font-size: 0.8em; color: #524E48; margin-top: 0.5em;">
+              Keeps git history 100% linear and clean. No messy "Merge branch main into..." commits cluttering history.
+            </p>
+          </div>
+          <div class="panel">
+            <h4>What Rebase Does Behind the Scenes:</h4>
+            <ol style="font-size: 0.82em; color: #524E48; line-height: 1.5; padding-left: 1.2em;">
+              <li>Temporarily sets your branch commits aside.</li>
+              <li>Advances your branch base to match newest main.</li>
+              <li>Replays your commits one by one on top.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Pull Request Reviews -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">06 / 09 // REVIEWS</span>
         </div>
         <h2>Pull Request Review Criteria</h2>
         <div class="cols-2">
@@ -173,14 +255,37 @@ Implements telebirr checkout callback verification.
         </div>
       </section>
 
-      <!-- Slide 6: Summary & Next Track -->
+      <!-- Slide 8: Squash and Merge -->
       <section>
         <div class="slide-header">
           <span class="brand">
             <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
             <span>ENGINEERING PLAYBOOK</span>
           </span>
-          <span class="slide-badge">05 / 06 // NEXT</span>
+          <span class="slide-badge">07 / 09 // SQUASH</span>
+        </div>
+        <h2>Why Zemen Defaults to "Squash and Merge"</h2>
+        <p style="font-size: 0.9em; color: #524E48;">
+          On your feature branch, you might make 12 messy WIP commits:
+        </p>
+        <pre><code class="text">commit 1: WIP login
+commit 2: fix syntax error
+commit 3: forgot to import react
+commit 4: still fixing typo
+commit 5: ready for review</code></pre>
+        <div class="note-box" style="margin-top: 0.8em;">
+          <strong>Squash and Merge</strong> condenses all 5 WIP commits into <strong>one clean, single commit</strong> on <tt>main</tt>: <tt>feat(auth): implement biometric login screen (#102)</tt>.
+        </div>
+      </section>
+
+      <!-- Slide 9: Next Track -->
+      <section>
+        <div class="slide-header">
+          <span class="brand">
+            <img src="../assets/images/zemen-logo.png" alt="Zemen" class="slide-header-logo">
+            <span>ENGINEERING PLAYBOOK</span>
+          </span>
+          <span class="slide-badge">08 / 09 // NEXT</span>
         </div>
         <h2>Next Track</h2>
         <div class="panel panel-accent" style="margin-top: 1.5em; padding: 25px;">
