@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 03: Frontend & Web Development | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">
+    <i class="fas fa-arrow-left"></i> Zemen Hub
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span class="slide-badge">TRACK 03</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
+          ENGINEERING WORKFLOWS SERIES
+        </p>
+        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">Frontend & Web Engineering Track</h1>
+        <p style="font-size: 1.1em; color: #5A5652; max-width: 820px;">
+          Master frontend-specific Git workflows: zero-stress lockfile conflict resolution, branch preview CI pipelines, and repository asset hygiene.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
+          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 35 min</span>
+          <span><i class="fas fa-code" style="color: #2563EB;"></i> Frontend, Fullstack & UI/UX Engineers</span>
+          <span><i class="fab fa-react"></i> Next.js / React</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: The Dreaded Lockfile Conflict -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>01 / 06 • LOCKFILES</span>
+        </div>
+        <h2>Resolving Package Lockfile Conflicts</h2>
+        <div class="callout callout-danger">
+          <strong>NEVER resolve package-lock.json or pnpm-lock.yaml manually in your code editor!</strong>
+          Manual editing leads to corrupted dependency integrity hashes.
+        </div>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div>
+            <h4>The 3-Step npm Solution:</h4>
+            <pre><code class="bash"># 1. Accept target package.json
+git checkout --theirs package.json
+
+# 2. Tell npm to regenerate the lockfile
+npm install
+
+# 3. Stage the clean regenerated lockfile
+git add package.json package-lock.json
+git commit -m "chore: regenerate package-lock"</code></pre>
+          </div>
+          <div>
+            <h4>For pnpm / yarn users:</h4>
+            <pre><code class="bash"># For pnpm:
+pnpm install --fix-lockfile
+
+# For yarn:
+yarn install --check-files</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Branch Previews -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>02 / 06 • PREVIEWS</span>
+        </div>
+        <h2>Preview Environments per PR</h2>
+        <div class="cols-2">
+          <div>
+            <p>Every active Pull Request should spin up an ephemeral preview URL so QA, designers, and product managers can test without running code locally.</p>
+            <ul style="font-size: 0.88em; margin-top: 1em;">
+              <li><strong>GitHub Pages / Vercel Bot:</strong> Automatically comments on the PR with preview link.</li>
+              <li><strong>Lighthouse CI Bot:</strong> Runs performance & accessibility scores against the branch.</li>
+              <li><strong>Visual Regression:</strong> Captures screenshots to spot accidental CSS breaks.</li>
+            </ul>
+          </div>
+          <div class="card navy">
+            <h4 style="color: #0C2340;">Automated PR Bot Flow</h4>
+            <p style="font-size: 0.85em; color: #5A5652; margin-top: 0.5em;">
+              Branch pushed &rarr; GitHub Actions runs build & tests &rarr; Preview deployed &rarr; Bot leaves comment:
+            </p>
+            <div style="background: #F5F2EB; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.75em; margin-top: 0.8em;">
+              ✅ Preview: https://zemen-app-feat-auth.vercel.app<br>
+              ⚡ Lighthouse Score: 98 / 100
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: .gitignore & Asset Hygiene -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>03 / 06 • REPO HYGIENE</span>
+        </div>
+        <h2>Frontend .gitignore Essentials</h2>
+        <p>Ensure these build artifacts and secrets never pollute Git history:</p>
+        <pre><code class="gitignore"># Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build outputs
+.next/
+out/
+build/
+dist/
+
+# Environment files & secrets
+.env*.local
+.env.production
+.env
+
+# Diagnostic logs & OS files
+npm-debug.log*
+yarn-debug.log*
+.DS_Store
+Thumbs.db</code></pre>
+      </section>
+
+      <!-- Slide 5: Handling Media & Large Assets -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>04 / 06 • ASSETS</span>
+        </div>
+        <h2>Handling Heavy Media Assets</h2>
+        <div class="cols-2">
+          <div class="card highlight">
+            <h4>Do NOT commit directly:</h4>
+            <ul style="font-size: 0.85em; margin-top: 0.5em;">
+              <li>Raw 4K video files or uncompressed MP4s</li>
+              <li>Multi-megabyte Photoshop (.psd) or Figma files</li>
+              <li>High-res unoptimized PNGs or TIFFs</li>
+            </ul>
+            <p style="font-size: 0.75em; color: #A51C30; margin-top: 0.5em;">
+              Bloats repository clone size for every team member forever!
+            </p>
+          </div>
+          <div class="card emerald">
+            <h4>Recommended Zemen Approaches:</h4>
+            <ul style="font-size: 0.85em; margin-top: 0.5em;">
+              <li>Host marketing media on Cloudflare R2 / AWS S3 / Cloudinary CDN.</li>
+              <li>For in-repo assets, use <strong>Git LFS (Large File Storage)</strong>:</li>
+            </ul>
+            <pre><code class="bash">git lfs install
+git lfs track "*.psd" "*.mp4"</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Summary & Lab -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>05 / 06 • ACTION</span>
+        </div>
+        <h2>Track 03 Practice Lab</h2>
+        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
+          <h3>Frontend Merge Conflict Exercise</h3>
+          <p>
+            Simulate a realistic <tt>package.json</tt> version collision between two simultaneous feature branches and practice safe regeneration.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+            <a href="../tracks/03_frontend_web/lab.md" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
+              <i class="fas fa-tools"></i> Open Frontend Lab
+            </a>
+            <a href="04-devops.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
+              Next: Backend & DevOps <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

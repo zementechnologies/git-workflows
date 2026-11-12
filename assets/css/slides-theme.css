@@ -1,0 +1,215 @@
+/* Zemen Technologies Custom Reveal.js Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+.reveal {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #1A1715;
+  background-color: #FCFBF9;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: 'Inter', sans-serif;
+  color: #0C2340;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+.reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+.reveal h2 { font-size: 1.6em; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.2em; margin-bottom: 0.3em; color: #A51C30; }
+
+.reveal p, .reveal li {
+  line-height: 1.6;
+  color: #383430;
+}
+
+.reveal strong {
+  color: #0C2340;
+  font-weight: 700;
+}
+
+.reveal a {
+  color: #A51C30;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.reveal a:hover {
+  color: #0C2340;
+}
+
+/* Slide Header & Footer Bar */
+.slide-header {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #8A857F;
+  border-bottom: 1px solid #E8E3D8;
+  padding-bottom: 8px;
+}
+
+.slide-header .brand {
+  font-weight: 700;
+  color: #0C2340;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slide-header .brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #A51C30;
+}
+
+.slide-badge {
+  background: #A51C30;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Code Blocks */
+.reveal pre {
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  border: 1px solid #30363D;
+  margin: 1em 0;
+  background-color: #0D1117;
+}
+
+.reveal pre code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  line-height: 1.45;
+  padding: 1.2em;
+  max-height: 480px;
+  color: #E6EDF3;
+}
+
+/* Inline Code */
+.reveal code:not(pre code) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background-color: #F5F2EB;
+  color: #A51C30;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #E8E3D8;
+}
+
+/* Layout Utilities */
+.reveal .cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.reveal .cols-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.reveal .card {
+  background: #FFFFFF;
+  border: 1px solid #E8E3D8;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.reveal .card.highlight {
+  border-left: 4px solid #A51C30;
+}
+
+.reveal .card.navy {
+  border-left: 4px solid #0C2340;
+}
+
+.reveal .card.emerald {
+  border-left: 4px solid #059669;
+}
+
+.reveal .callout {
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  margin: 1em 0;
+}
+
+.reveal .callout-warning {
+  background-color: #FFFBEB;
+  border-left: 4px solid #F59E0B;
+  color: #92400E;
+}
+
+.reveal .callout-danger {
+  background-color: #FEF2F2;
+  border-left: 4px solid #EF4444;
+  color: #991B1B;
+}
+
+.reveal .callout-tip {
+  background-color: #ECFDF5;
+  border-left: 4px solid #10B981;
+  color: #065F46;
+}
+
+/* Controls & Progress */
+.reveal .progress {
+  color: #A51C30;
+  height: 4px;
+}
+
+.reveal .controls {
+  color: #0C2340;
+}
+
+/* Back Link Button */
+.slides-nav-home {
+  position: fixed;
+  bottom: 16px;
+  left: 20px;
+  z-index: 50;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background: #0C2340;
+  color: #FFFFFF !important;
+  padding: 6px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.85;
+  transition: opacity 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slides-nav-home:hover {
+  opacity: 1;
+  background: #A51C30;
+}

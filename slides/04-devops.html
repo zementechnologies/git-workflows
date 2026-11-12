@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 04: Backend, Cloud & DevOps | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">
+    <i class="fas fa-arrow-left"></i> Zemen Hub
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span class="slide-badge">TRACK 04</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
+          ENGINEERING WORKFLOWS SERIES
+        </p>
+        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">Backend, Cloud & DevOps Track</h1>
+        <p style="font-size: 1.1em; color: #5A5652; max-width: 820px;">
+          Git for infrastructure and production services: Semantic versioning, GitOps releases, automated CI/CD triggers, and leak prevention.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
+          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 45 min</span>
+          <span><i class="fas fa-server" style="color: #059669;"></i> Backend & DevOps Engineers</span>
+          <span><i class="fas fa-cubes"></i> GitOps & CI/CD</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: Semantic Versioning & Tags -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>01 / 06 • RELEASES</span>
+        </div>
+        <h2>Semantic Versioning (SemVer) & Git Tags</h2>
+        <p>Standard version structure: <tt>MAJOR.MINOR.PATCH</tt> (e.g., <tt>v2.4.1</tt>)</p>
+        <div class="cols-3" style="font-size: 0.85em; margin-top: 1.2em;">
+          <div class="card highlight">
+            <h4>MAJOR (v2.0.0)</h4>
+            <p>Breaking API or schema changes. Incompatible with previous versions.</p>
+          </div>
+          <div class="card navy">
+            <h4>MINOR (v1.5.0)</h4>
+            <p>New backward-compatible functionality or endpoint additions.</p>
+          </div>
+          <div class="card emerald">
+            <h4>PATCH (v1.4.2)</h4>
+            <p>Backward-compatible bug fixes or security patches.</p>
+          </div>
+        </div>
+        <pre style="margin-top: 1.2em;"><code class="bash"># Create an annotated release tag (ALWAYS use -a for releases)
+git tag -a v2.4.0 -m "Release v2.4.0: Add CBE Birr webhook handler"
+
+# Push tag to trigger production deployment pipeline
+git push origin v2.4.0</code></pre>
+      </section>
+
+      <!-- Slide 3: GitOps Philosophy -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>02 / 06 • GITOPS</span>
+        </div>
+        <h2>GitOps: Git as the Single Source of Truth</h2>
+        <div class="cols-2">
+          <div>
+            <p>No engineer SSHs into production to run <tt>kubectl apply</tt> or <tt>docker run</tt>.</p>
+            <p style="margin-top: 0.5em;">All infrastructure state is declared in version-controlled repositories.</p>
+            <ul style="font-size: 0.88em; margin-top: 1em;">
+              <li><strong>Auditable:</strong> Every configuration change has a commit author and PR review.</li>
+              <li><strong>Reproducible:</strong> Spin up identical staging clusters in minutes.</li>
+              <li><strong>Zero-Downtime Rollback:</strong> Simply run <tt>git revert</tt> to roll back bad infrastructure!</li>
+            </ul>
+          </div>
+          <div class="card navy">
+            <h4 style="color: #0C2340;">GitOps Controller Loop</h4>
+            <div style="font-family: monospace; font-size: 0.8em; line-height: 1.6; color: #383430; margin-top: 0.5em;">
+              1. Engineer merges PR into main<br>
+              2. Tag v2.4.0 pushed<br>
+              3. CI builds & pushes Docker image<br>
+              4. GitOps agent detects new manifest<br>
+              5. Kubernetes syncs live cluster state
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Secrets Safety -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>03 / 06 • SECURITY</span>
+        </div>
+        <h2>Zero Secrets in Git: The Golden Rule</h2>
+        <div class="callout callout-danger">
+          <strong>CRITICAL:</strong> Never commit AWS keys, database passwords, JWT secrets, or payment credentials into Git—even in private repositories!
+        </div>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div>
+            <h4>Automated Pre-commit Scanning:</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">Install <strong>Gitleaks</strong> to intercept credentials before they leave your workstation:</p>
+            <pre><code class="bash"># Install Gitleaks pre-commit hook
+gitleaks protect --staged -v</code></pre>
+          </div>
+          <div>
+            <h4>What if a secret was committed?</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">Deleting the commit is NOT enough. The secret is compromised.</p>
+            <ol style="font-size: 0.82em; color: #A51C30;">
+              <li><strong>Immediately rotate / revoke</strong> the API key on the service provider.</li>
+              <li>Purge git history using <tt>git-filter-repo</tt>.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Database Migrations Branching -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>04 / 06 • DATABASE MIGRATIONS</span>
+        </div>
+        <h2>Handling Database Migrations in Git</h2>
+        <p>When multiple engineers write Prisma/TypeORM/Flyway migrations simultaneously:</p>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div class="card highlight">
+            <h4>Timestamp Collisions</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              Two branches generate migration files with timestamps out of order.
+            </p>
+            <p style="font-size: 0.82em; color: #A51C30; margin-top: 0.5em;">
+              Can cause production migrations to execute out-of-order and crash.
+            </p>
+          </div>
+          <div class="card emerald">
+            <h4>The Zemen Protocol:</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              Before merging any migration PR, rebase against latest <tt>main</tt> and run:
+            </p>
+            <pre><code class="bash">git fetch origin
+git rebase origin/main
+npm run test:migrations</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Summary & Lab -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>05 / 06 • ACTION</span>
+        </div>
+        <h2>Track 04 Practice Lab</h2>
+        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
+          <h3>DevOps Release & Tagging Lab</h3>
+          <p>
+            Practice generating semantic release tags, configuring GitHub Actions release triggers, and simulating secret leak prevention.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+            <a href="../tracks/04_backend_devops/lab.md" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
+              <i class="fas fa-server"></i> Open DevOps Lab
+            </a>
+            <a href="05-advanced.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
+              Next: Advanced Git & Emergencies <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

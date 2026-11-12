@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 05: Advanced Git & Disaster Recovery | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">
+    <i class="fas fa-arrow-left"></i> Zemen Hub
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span class="slide-badge">TRACK 05</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
+          ENGINEERING WORKFLOWS SERIES
+        </p>
+        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">Advanced Git & Disaster Recovery</h1>
+        <p style="font-size: 1.1em; color: #5A5652; max-width: 820px;">
+          The Git paramedic toolkit: Interactive rebase mastery, binary searching bugs with bisect, and recovering deleted commits with reflog.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
+          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 45 min</span>
+          <span><i class="fas fa-shield-alt" style="color: #A51C30;"></i> Senior & Lead Engineers</span>
+          <span><i class="fas fa-magic"></i> Advanced Toolkit</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: Interactive Rebase -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>01 / 06 • REBASING</span>
+        </div>
+        <h2>Interactive Rebase: Curating History</h2>
+        <p>Before submitting a PR, polish messy WIP commits into a cohesive story:</p>
+        <pre><code class="bash"># Rebase the last 4 commits
+git rebase -i HEAD~4</code></pre>
+        <div class="cols-2" style="font-size: 0.85em; margin-top: 1em;">
+          <div>
+            <ul>
+              <li><tt>pick</tt> : Keep the commit as-is</li>
+              <li><tt>reword</tt> : Edit the commit message</li>
+              <li><tt>edit</tt> : Pause and edit files before committing</li>
+              <li><tt>squash</tt> : Meld into previous commit & combine messages</li>
+              <li><tt>fixup</tt> : Meld into previous commit & discard message</li>
+              <li><tt>drop</tt> : Remove the commit completely</li>
+            </ul>
+          </div>
+          <div>
+            <div class="callout callout-warning">
+              <strong>The Golden Rule of Rebase:</strong><br>
+              Never rebase commits that have already been pushed to a public/shared branch (like <tt>main</tt>)! Only rebase your local private branch.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: git reflog: The Ultimate Safety Net -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>02 / 06 • DISASTER RECOVERY</span>
+        </div>
+        <h2><tt>git reflog</tt>: Nothing Is Ever Lost</h2>
+        <div class="cols-2">
+          <div>
+            <p>Accidentally ran <tt>git reset --hard</tt> or deleted a branch? Don't panic.</p>
+            <p style="margin-top: 0.5em;"><tt>git reflog</tt> records every single movement of HEAD in your local repository for 30–90 days!</p>
+            <div class="callout callout-tip" style="margin-top: 1em;">
+              Even orphaned commits remain in the object store until garbage collection (<tt>git gc</tt>).
+            </div>
+          </div>
+          <div>
+            <pre><code class="bash"># 1. View reflog history
+$ git reflog
+8f2d91a HEAD@{0}: reset: moving to HEAD~2
+a34c192 HEAD@{1}: commit: add payment logic
+b891e45 HEAD@{2}: checkout: moving from feat to main
+
+# 2. Resurrect the "lost" commit!
+$ git checkout -b recovered-work a34c192
+Switched to a new branch 'recovered-work'</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: git bisect: Finding Bugs in Seconds -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>03 / 06 • DEBUGGING</span>
+        </div>
+        <h2><tt>git bisect</tt>: Binary Search Your History</h2>
+        <p>A production bug appeared somewhere in the last 200 commits? Don't guess—automate:</p>
+        <pre><code class="bash"># 1. Start bisect mode
+git bisect start
+
+# 2. Mark current broken state
+git bisect bad
+
+# 3. Mark last known good commit/tag
+git bisect good v1.8.0
+
+# 4. Git checks out midpoint commit automatically.
+# Test it, then inform Git:
+git bisect good   # or: git bisect bad
+
+# 5. Git zeroes in on the exact commit that broke production!
+# When done:
+git bisect reset</code></pre>
+      </section>
+
+      <!-- Slide 5: Reset vs Revert -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>04 / 06 • UNDO STRATEGIES</span>
+        </div>
+        <h2>Reset vs Revert: Which to Use?</h2>
+        <div class="cols-2" style="margin-top: 1.2em;">
+          <div class="card highlight">
+            <h4><tt>git reset</tt> (Rewrites History)</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              Moves the branch pointer backward. Erases commits from history.
+            </p>
+            <ul style="font-size: 0.8em; margin-top: 0.5em;">
+              <li><tt>--soft</tt>: Keeps changes staged in Index</li>
+              <li><tt>--mixed</tt>: Keeps changes unstaged in Working Dir</li>
+              <li><tt>--hard</tt>: Discards all changes</li>
+            </ul>
+            <p style="color: #A51C30; font-size: 0.75em; font-weight: 600; margin-top: 0.5em;">ONLY on private unpushed branches!</p>
+          </div>
+          <div class="card emerald">
+            <h4><tt>git revert</tt> (Forward Undo)</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              Creates an entirely new commit that inverts the changes of a previous commit.
+            </p>
+            <pre style="margin-top: 0.5em;"><code class="bash">git revert a34c192</code></pre>
+            <p style="color: #059669; font-size: 0.75em; font-weight: 600; margin-top: 0.5em;">Safe for shared branches (<tt>main</tt>, <tt>staging</tt>)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Summary & Lab -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>05 / 06 • ACTION</span>
+        </div>
+        <h2>Track 05 Disaster Recovery Lab</h2>
+        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
+          <h3>Emergency Surgery Simulation</h3>
+          <p>
+            Deliberately break a branch, delete commits with <tt>--hard reset</tt>, and use <tt>git reflog</tt> and interactive rebasing to bring the repository back to life.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+            <a href="../tracks/05_advanced_recovery/lab.md" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
+              <i class="fas fa-first-aid"></i> Open Recovery Runbook
+            </a>
+            <a href="06-ai-automation.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
+              Next: AI & Automation <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

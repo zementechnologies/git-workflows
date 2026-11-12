@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 02: Team Workflows & Collaboration | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">
+    <i class="fas fa-arrow-left"></i> Zemen Hub
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span class="slide-badge">TRACK 02</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
+          ENGINEERING WORKFLOWS SERIES
+        </p>
+        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">Team Workflows & Collaboration</h1>
+        <p style="font-size: 1.1em; color: #5A5652; max-width: 820px;">
+          Ship code fearlessly with standardized branch strategies, atomic conventional commits, top-tier PRs, and effective code reviews.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
+          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 40 min</span>
+          <span><i class="fas fa-users" style="color: #0C2340;"></i> All Product & Engineering Teams</span>
+          <span><i class="fas fa-code-branch"></i> GitHub Flow</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: Workflow Models Comparison -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>01 / 06 • STRATEGY COMPARISON</span>
+        </div>
+        <h2>Branching Models: Which to Use?</h2>
+        <div class="cols-3" style="margin-top: 1.2em;">
+          <div class="card highlight">
+            <h4>1. GitHub Flow</h4>
+            <p style="font-size: 0.85em; color: #5A5652; margin-top: 0.4em;">
+              <strong>Zemen Standard for Web & SaaS:</strong> Short-lived feature branches cut from <tt>main</tt>, tested, PR reviewed, and merged directly to deploy.
+            </p>
+            <div style="font-size: 0.75em; color: #059669; margin-top: 0.8em; font-weight: 600;">Fast, continuous delivery</div>
+          </div>
+          <div class="card">
+            <h4>2. Trunk-Based</h4>
+            <p style="font-size: 0.85em; color: #5A5652; margin-top: 0.4em;">
+              Developers merge tiny commits to <tt>main</tt> multiple times per day behind feature flags. Requires robust automated CI test suites.
+            </p>
+            <div style="font-size: 0.75em; color: #0C2340; margin-top: 0.8em; font-weight: 600;">Ideal for high-velocity teams</div>
+          </div>
+          <div class="card">
+            <h4>3. GitFlow</h4>
+            <p style="font-size: 0.85em; color: #5A5652; margin-top: 0.4em;">
+              Complex branches: <tt>develop</tt>, <tt>release/*</tt>, <tt>hotfix/*</tt>, <tt>main</tt>. Heavy overhead. Only for scheduled versioned releases.
+            </p>
+            <div style="font-size: 0.75em; color: #A51C30; margin-top: 0.8em; font-weight: 600;">Avoid for cloud services</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Branch Naming Conventions -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>02 / 06 • CONVENTIONS</span>
+        </div>
+        <h2>Zemen Branch Naming Standards</h2>
+        <p>Branch names must be descriptive and follow the pattern <tt>&lt;type&gt;/&lt;ticket-id&gt;-&lt;short-desc&gt;</tt>:</p>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div>
+            <ul>
+              <li><code style="color: #059669;">feat/</code> New feature or user capability</li>
+              <li><code style="color: #A51C30;">fix/</code> Bug fix for an issue</li>
+              <li><code style="color: #D97706;">perf/</code> Performance optimization</li>
+              <li><code style="color: #2563EB;">refactor/</code> Code cleanup without behavior change</li>
+              <li><code style="color: #6B7280;">chore/</code> Tooling, dependencies, config updates</li>
+            </ul>
+          </div>
+          <div>
+            <pre><code class="bash"># Recommended examples:
+git switch -c feat/ZM-204-payment-gateway
+git switch -c fix/session-timeout-redirect
+git switch -c refactor/cms-article-parser
+git switch -c chore/upgrade-nextjs-15
+
+# Bad branch names:
+# x fix
+# x aaron-patch
+# x updates-new</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Conventional Commits -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>03 / 06 • COMMIT QUALITY</span>
+        </div>
+        <h2>Conventional Commits Standard</h2>
+        <p>Structure your commits so automated changelogs and version bumps work seamlessly:</p>
+        <pre><code class="markdown">&lt;type&gt;(&lt;optional-scope&gt;): &lt;imperative short description&gt;
+
+[optional detailed body explaining WHY, not WHAT]
+
+[optional footer: Closes #123, BREAKING CHANGE: ...]</code></pre>
+        <div class="cols-2" style="margin-top: 1em; font-size: 0.85em;">
+          <div class="card emerald">
+            <strong>Good Commit Message:</strong><br>
+            <tt>feat(auth): add OAuth2 refresh token rotation</tt><br>
+            <span style="color: #5A5652;">Prevents token replay attacks by issuing a single-use refresh token on every renewal request.</span>
+          </div>
+          <div class="card highlight">
+            <strong>Bad Commit Message:</strong><br>
+            <tt>fixed stuff</tt><br>
+            <span style="color: #716D68;">Provides zero context for reviewers or future engineers running git bisect.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Anatomy of a Great PR -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>04 / 06 • PULL REQUESTS</span>
+        </div>
+        <h2>The Anatomy of a 5-Star Pull Request</h2>
+        <div class="cols-2">
+          <div>
+            <h4>What reviewers want to see:</h4>
+            <ol style="font-size: 0.88em; margin-top: 0.5em;">
+              <li><strong>Context & Motivation:</strong> Why is this change needed? Link ticket / issue.</li>
+              <li><strong>Visual Proof:</strong> Screenshots or Loom recording for UI changes.</li>
+              <li><strong>Verification Steps:</strong> Step-by-step instructions to test locally.</li>
+              <li><strong>Small Scope:</strong> Less than 400 lines changed per PR whenever possible.</li>
+            </ol>
+          </div>
+          <div>
+            <div class="callout callout-tip">
+              <strong>Zemen Golden Rule:</strong> The easier a PR is to review, the faster it gets merged into production!
+            </div>
+            <pre><code class="markdown">## Description
+Implements telebirr checkout callback verification.
+
+## Testing Steps
+1. Run `npm run dev`
+2. Navigate to `/checkout/test`
+3. Verify successful redirect to `/receipt`</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Merging Strategies -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>05 / 06 • MERGE STRATEGIES</span>
+        </div>
+        <h2>Squash vs Rebase vs Merge Commit</h2>
+        <div class="cols-3" style="font-size: 0.85em; margin-top: 1.2em;">
+          <div class="card highlight">
+            <h4>Squash and Merge</h4>
+            <p>Collapses all WIP branch commits into 1 clean commit on main.</p>
+            <p style="color: #059669; font-weight: 600; margin-top: 0.5em;">Zemen Default for Features</p>
+          </div>
+          <div class="card">
+            <h4>Rebase and Merge</h4>
+            <p>Replays each individual commit onto the tip of main. Keeps linear history.</p>
+            <p style="color: #0C2340; font-weight: 600; margin-top: 0.5em;">Good for curated series</p>
+          </div>
+          <div class="card">
+            <h4>Create a Merge Commit</h4>
+            <p>Creates a 2-parent merge node preserving exact branch timeline.</p>
+            <p style="color: #5A5652; font-weight: 600; margin-top: 0.5em;">Used for release branches</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Next Steps -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>06 / 06 • NEXT TRACK</span>
+        </div>
+        <h2>Continue Your Learning</h2>
+        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
+          <h3>Ready for Track 03?</h3>
+          <p>
+            Dive into the <strong>Frontend & Web Engineering Track</strong> to learn lockfile conflict management, preview deployments, monorepos, and bundle hygiene.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+            <a href="../tracks/02_collaboration_workflows/lab.md" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
+              <i class="fas fa-file-code"></i> PR Simulation Lab
+            </a>
+            <a href="03-frontend.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
+              Launch Track 03: Web & Frontend <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

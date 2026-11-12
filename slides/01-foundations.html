@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track 01: Git Foundations & Mental Model | Zemen Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/slides-theme.css">
+</head>
+<body>
+  <a href="../index.html" class="slides-nav-home">
+    <i class="fas fa-arrow-left"></i> Zemen Hub
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section data-background-color="#FCFBF9">
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span class="slide-badge">TRACK 01</span>
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #A51C30; font-weight: 700; margin-top: 40px;">
+          ENGINEERING WORKFLOWS SERIES
+        </p>
+        <h1 style="color: #0C2340; font-size: 2.3em; margin: 0.2em 0 0.4em;">Git Foundations & The Mental Model</h1>
+        <p style="font-size: 1.1em; color: #5A5652; max-width: 800px;">
+          Demystifying Git from the ground up: understand objects, the three trees, snapshots vs deltas, and master everyday operations.
+        </p>
+        <div style="margin-top: 2em; display: flex; gap: 1.5em; align-items: center; font-size: 0.8em; color: #8A857F;">
+          <span><i class="fas fa-clock" style="color: #A51C30;"></i> 35 min</span>
+          <span><i class="fas fa-user-check" style="color: #059669;"></i> Onboarding / All Engineers</span>
+          <span><i class="fas fa-laptop-code"></i> Interactive Slides</span>
+        </div>
+      </section>
+
+      <!-- Slide 2: Why Git Confuses People -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>01 / 07 • CORE PHILOSOPHY</span>
+        </div>
+        <h2>Why Git Confuses People</h2>
+        <div class="cols-2" style="margin-top: 1.5em;">
+          <div class="card highlight">
+            <h3 style="color: #A51C30;">The Wrong Mental Model</h3>
+            <p>Treating Git as a delta-based cloud backup system (like Google Drive or Dropbox).</p>
+            <p style="font-size: 0.9em; color: #716D68; margin-top: 0.5em;">
+              "I pushed some file differences, Git calculates line changes, and if something goes wrong I re-clone."
+            </p>
+          </div>
+          <div class="card navy">
+            <h3 style="color: #0C2340;">The Real Mental Model</h3>
+            <p>Git is a <strong>Content-Addressable Database</strong> storing immutable file snapshots connected as a <strong>Directed Acyclic Graph (DAG)</strong>.</p>
+            <p style="font-size: 0.9em; color: #716D68; margin-top: 0.5em;">
+              Every commit points to a root tree and its parent commits. SHA-1 hashes guarantee tamper-proof integrity.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: The Three Trees -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>02 / 07 • THE THREE TREES</span>
+        </div>
+        <h2>The Three Trees of Git</h2>
+        <p>Understanding where your code lives at any second:</p>
+        <div class="cols-3" style="margin-top: 1.2em;">
+          <div class="card">
+            <span style="font-size: 1.5em;">📂</span>
+            <h4>1. Working Directory</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              The visible files on your filesystem that you edit in VSCode / IDE. Untracked and uncommitted changes live here.
+            </p>
+            <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">Real files on disk</code>
+          </div>
+          <div class="card highlight">
+            <span style="font-size: 1.5em;">📦</span>
+            <h4 style="color: #A51C30;">2. Staging Area (Index)</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              A binary file (<tt>.git/index</tt>) holding the exact snapshot destined for your next commit. You curate this with <tt>git add</tt>.
+            </p>
+            <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">git add file.ts</code>
+          </div>
+          <div class="card navy">
+            <span style="font-size: 1.5em;">🏛️</span>
+            <h4 style="color: #0C2340;">3. Git Repository</h4>
+            <p style="font-size: 0.85em; color: #5A5652;">
+              The permanent historical database inside <tt>.git/objects</tt>. Once committed, data is virtually impossible to lose.
+            </p>
+            <code style="font-size: 0.75em; display: block; margin-top: 0.5em;">git commit -m "..."</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Git Objects Under the Hood -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>03 / 07 • INTERNALS</span>
+        </div>
+        <h2>Under The Hood: Git Objects</h2>
+        <p>Inside the <tt>.git/objects/</tt> directory, Git stores 4 primitive object types:</p>
+        <div class="cols-2" style="margin-top: 1em;">
+          <div>
+            <ul>
+              <li><strong>Blob:</strong> Raw file contents (compressed). Filename & permissions are not stored here.</li>
+              <li><strong>Tree:</strong> Directory listing. Points to Blobs (files) and other Trees (subdirectories).</li>
+              <li><strong>Commit:</strong> Snapshot metadata: pointer to top-level Tree, parent commit(s), author, timestamp, commit message.</li>
+              <li><strong>Annotated Tag:</strong> Pointer to a specific commit with a cryptographic signature or release note.</li>
+            </ul>
+          </div>
+          <div>
+            <pre><code class="bash"># Inspect object type & content
+$ git cat-file -t HEAD
+commit
+
+$ git cat-file -p HEAD
+tree 4b825dc642cb6eb9a060e54bf8d69288fbee4904
+parent a1b2c3d4e5f6...
+author Aaron Kebede &lt;aaron@zemen.com.et&gt; 1731400000 +0300
+committer Aaron Kebede &lt;aaron@zemen.com.et&gt; 1731400000 +0300
+
+feat(auth): add JWT bearer validation</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Branches are Just Pointers -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>04 / 07 • BRANCHES & HEAD</span>
+        </div>
+        <h2>Branches & HEAD: 41-Byte Pointers</h2>
+        <div class="cols-2">
+          <div>
+            <p>In Git, a branch is <strong>not</strong> a separate folder or container of files.</p>
+            <p style="margin-top: 0.5em;">A branch is simply a text file containing a 40-character commit hash!</p>
+            <div class="callout callout-tip" style="margin-top: 1em;">
+              <strong>Key takeaway:</strong> Creating, switching, or deleting a branch in Git is practically instantaneous (O(1) complexity).
+            </div>
+          </div>
+          <div>
+            <pre><code class="bash"># Look at the actual branch file:
+$ cat .git/refs/heads/main
+a1b2c3d4e5f67890123456789abcdef012345678
+
+# HEAD tells Git what you currently have checked out:
+$ cat .git/HEAD
+ref: refs/heads/main</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Essential Daily Commands -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>05 / 07 • ESSENTIAL WORKFLOW</span>
+        </div>
+        <h2>Daily Commands at Zemen</h2>
+        <pre><code class="bash"># Check repository state cleanly
+git status -s
+
+# Stage hunks interactively (commit atomic pieces!)
+git add -p src/components/Navbar.tsx
+
+# Create a clean conventional commit
+git commit -m "feat(nav): add mobile responsive drawer toggle"
+
+# Create and switch to a new feature branch
+git switch -c feat/billing-portal
+
+# View rich visual log
+git log --oneline --graph --decorate --all -n 10</code></pre>
+      </section>
+
+      <!-- Slide 7: Configuration & Identity -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>06 / 07 • SETUP</span>
+        </div>
+        <h2>Setting Up Your Zemen Identity</h2>
+        <p>Ensure your company commits attribute properly to your Zemen profile:</p>
+        <pre><code class="bash"># Global developer setup
+git config --global user.name "Your Full Name"
+git config --global user.email "yourname@zemen.com.et"
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"
+
+# Useful daily shortcuts
+git config --global alias.st "status -sb"
+git config --global alias.lg "log --oneline --graph --decorate -n 15"
+git config --global alias.co checkout
+git config --global alias.br branch</code></pre>
+      </section>
+
+      <!-- Slide 8: Next Steps & Lab -->
+      <section>
+        <div class="slide-header">
+          <span class="brand"><span class="brand-dot"></span> ZEMEN TECHNOLOGIES</span>
+          <span>07 / 07 • ACTION ITEM</span>
+        </div>
+        <h2>Ready for Hands-on Practice?</h2>
+        <div class="card highlight" style="margin-top: 1.5em; padding: 25px;">
+          <h3 style="color: #A51C30;">Track 01 Hands-On Lab</h3>
+          <p>
+            Complete the interactive terminal lab: create a sandbox repository, inspect object hashes with <tt>cat-file</tt>, stage atomic hunks with <tt>git add -p</tt>, and create branch pointers.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; gap: 1em;">
+            <a href="../tracks/01_git_foundations/lab.md" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #A51C30; color: #fff; border-radius: 6px;">
+              <i class="fas fa-terminal"></i> Open Track 01 Lab Guide
+            </a>
+            <a href="02-collaboration.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9em; background: #0C2340; color: #fff; border-radius: 6px;">
+              Next Track: Team Collaboration <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+  </script>
+</body>
+</html>

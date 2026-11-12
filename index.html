@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zemen Technologies | Git & Engineering Workflows Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A modern Git and engineering workflows curriculum for Zemen Technologies. Inspired by Flatiron Institute Sciware, featuring interactive slides, terminal labs, and visual commit playgrounds.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/zemen-logo.png" alt="Zemen Technologies Logo" class="nav-logo">
+        <span>ZEMEN</span>
+        <span class="brand-badge">WORKFLOWS</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#tracks" class="nav-link">Tracks</a>
+        <a href="#simulator" class="nav-link">Git Simulator</a>
+        <a href="#cheatsheets" class="nav-link">Emergency Runbook</a>
+        <a href="#about" class="nav-link">About & Inspo</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <a href="https://github.com/zementechnologies/git-workflows" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="hero-pill">
+        <span class="dot"></span>
+        <span>Zemen Technologies Engineering Series • Inspired by Sciware</span>
+      </div>
+
+      <h1 class="hero-title">
+        Master Git & Team Workflows at <span>Zemen</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A hands-on, multi-track curriculum tailored for modern software engineers. Dive into interactive presentations, real-world collaboration patterns, disaster recovery recipes, and visual branch simulators.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#tracks" class="btn-primary">
+          <i class="fas fa-layer-group"></i> Explore Tracks
+        </a>
+        <a href="#simulator" class="btn-secondary">
+          <i class="fas fa-terminal"></i> Try Git Simulator
+        </a>
+        <a href="slides/01-foundations.html" class="btn-secondary">
+          <i class="fas fa-play-circle"></i> Launch Track 01 Slides
+        </a>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Specialized Tracks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">36+</div>
+          <div class="stat-label">Interactive Slides</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Hands-on Terminal Labs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Sciware</div>
+          <div class="stat-label">Curriculum Inspiration</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- Tracks Section -->
+    <section id="tracks">
+      <div class="section-header">
+        <div class="section-tag">Learning Pathways</div>
+        <h2 class="section-title">Specialized Engineering Tracks</h2>
+        <p class="section-desc">
+          Select your engineering track or follow sequentially from fundamentals to advanced automation and emergency surgery.
+        </p>
+      </div>
+
+      <!-- Filter & Search Toolbar -->
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">All Tracks</button>
+          <button class="filter-pill" data-filter="foundations">Foundations</button>
+          <button class="filter-pill" data-filter="collaboration">Collaboration</button>
+          <button class="filter-pill" data-filter="frontend">Frontend & Web</button>
+          <button class="filter-pill" data-filter="devops">Backend & DevOps</button>
+          <button class="filter-pill" data-filter="advanced">Advanced & Recovery</button>
+          <button class="filter-pill" data-filter="ai">AI & Tooling</button>
+        </div>
+
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="track-search-input" placeholder="Search topics, commands...">
+        </div>
+      </div>
+
+      <!-- Tracks Grid -->
+      <div class="tracks-grid">
+
+        <!-- Track 1: Foundations -->
+        <article class="track-card" data-category="foundations" style="--track-color: #0C2340;">
+          <div class="track-header">
+            <span class="track-badge">Track 01 • Core</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 35 min</span>
+          </div>
+          <h3 class="track-title">Git Foundations & Mental Model</h3>
+          <p class="track-description">
+            Demystify Git internals: Understand the DAG, blobs, trees, commits, the three trees (working dir, index, HEAD), and master clean atomic commits.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">DAG Model</span>
+            <span class="topic-tag">Three Trees</span>
+            <span class="topic-tag">git add -p</span>
+            <span class="topic-tag">Branches as Pointers</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/01-foundations.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/01_git_foundations/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/01_git_foundations/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+        <!-- Track 2: Collaboration -->
+        <article class="track-card" data-category="collaboration" style="--track-color: #A51C30;">
+          <div class="track-header">
+            <span class="track-badge">Track 02 • Team</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 40 min</span>
+          </div>
+          <h3 class="track-title">Team Workflows & Collaboration</h3>
+          <p class="track-description">
+            Ship with confidence using Zemen's GitHub Flow: standard branch naming conventions, Conventional Commits, PR anatomy, and constructive code reviews.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">GitHub Flow</span>
+            <span class="topic-tag">Conventional Commits</span>
+            <span class="topic-tag">PR Quality</span>
+            <span class="topic-tag">Squash vs Rebase</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/02-collaboration.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/02_collaboration_workflows/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/02_collaboration_workflows/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+        <!-- Track 3: Frontend & Web -->
+        <article class="track-card" data-category="frontend" style="--track-color: #2563EB;">
+          <div class="track-header">
+            <span class="track-badge">Track 03 • Web</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 35 min</span>
+          </div>
+          <h3 class="track-title">Frontend & Web Development</h3>
+          <p class="track-description">
+            Solve web-specific challenges: safely resolve package-lock.json and pnpm-lock collisions, configure branch preview deployments, and maintain asset hygiene.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">Lockfile Conflicts</span>
+            <span class="topic-tag">Preview Deploys</span>
+            <span class="topic-tag">Git LFS</span>
+            <span class="topic-tag">Next.js Hygiene</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/03-frontend.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/03_frontend_web/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/03_frontend_web/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+        <!-- Track 4: Backend & DevOps -->
+        <article class="track-card" data-category="devops" style="--track-color: #059669;">
+          <div class="track-header">
+            <span class="track-badge">Track 04 • Cloud</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 45 min</span>
+          </div>
+          <h3 class="track-title">Backend, Cloud & DevOps Track</h3>
+          <p class="track-description">
+            Version infrastructure and APIs: Semantic Versioning, annotated release tags, GitOps workflows with Kubernetes, and preventing accidental credential leaks.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">SemVer & Tags</span>
+            <span class="topic-tag">GitOps</span>
+            <span class="topic-tag">Secret Scanning</span>
+            <span class="topic-tag">DB Migrations</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/04-devops.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/04_backend_devops/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/04_backend_devops/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+        <!-- Track 5: Advanced & Recovery -->
+        <article class="track-card" data-category="advanced" style="--track-color: #DC2626;">
+          <div class="track-header">
+            <span class="track-badge">Track 05 • Advanced</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 45 min</span>
+          </div>
+          <h3 class="track-title">Advanced Git & Disaster Recovery</h3>
+          <p class="track-description">
+            Your emergency paramedic toolkit: Interactive rebase surgery, restoring deleted branches with git reflog, and binary-searching regressions with git bisect.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">git rebase -i</span>
+            <span class="topic-tag">git reflog</span>
+            <span class="topic-tag">git bisect</span>
+            <span class="topic-tag">Reset vs Revert</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/05-advanced.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/05_advanced_recovery/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/05_advanced_recovery/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+        <!-- Track 6: AI & Tooling -->
+        <article class="track-card" data-category="ai" style="--track-color: #7C3AED;">
+          <div class="track-header">
+            <span class="track-badge">Track 06 • AI</span>
+            <span class="track-duration"><i class="far fa-clock"></i> 35 min</span>
+          </div>
+          <h3 class="track-title">AI-Assisted Git & Developer Tooling</h3>
+          <p class="track-description">
+            Leverage AI coding agents responsibly without cluttering commit history, install Husky pre-commit hooks, and automate PR status checks with GitHub Actions.
+          </p>
+          <div class="track-topics">
+            <span class="topic-tag">AI Hygiene</span>
+            <span class="topic-tag">Husky & Lint-staged</span>
+            <span class="topic-tag">GitHub Actions</span>
+            <span class="topic-tag">PR Bots</span>
+          </div>
+          <div class="track-footer">
+            <a href="slides/06-ai-automation.html" class="btn-track-slides">
+              <i class="fas fa-desktop"></i> Slides
+            </a>
+            <a href="tracks/06_ai_and_automation/README.md" class="btn-track-guide">
+              <i class="fas fa-book-open"></i> Guide
+            </a>
+            <a href="tracks/06_ai_and_automation/lab.md" class="btn-track-guide" title="Lab Exercise">
+              <i class="fas fa-flask"></i> Lab
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Interactive Git Simulator Section -->
+    <section id="simulator" class="playground-section">
+      <div class="section-header" style="margin-bottom: 0.5rem;">
+        <div class="section-tag">Interactive Learning</div>
+        <h2 class="section-title">Visual Git Playground & Simulator</h2>
+        <p class="section-desc">
+          Test real Git commands and watch how branches, commits, and HEAD move in the live DAG graph below. No terminal installation required.
+        </p>
+      </div>
+
+      <div class="playground-grid">
+        <!-- Visual Canvas -->
+        <div class="canvas-container">
+          <div class="canvas-header">
+            <span><i class="fas fa-project-diagram"></i> Live Commit DAG</span>
+            <span class="status-badge" id="current-branch-badge">main</span>
+          </div>
+          <svg id="git-svg-canvas" viewBox="0 0 500 280"></svg>
+        </div>
+
+        <!-- Terminal Interface -->
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="window-dots">
+              <div class="dot-red"></div>
+              <div class="dot-yellow"></div>
+              <div class="dot-green"></div>
+            </div>
+            <div class="terminal-title">bash — zemen-app (git)</div>
+            <div style="font-size: 0.72rem; color: #8B949E;">Type 'git help'</div>
+          </div>
+
+          <div class="terminal-log" id="terminal-log"></div>
+
+          <div class="terminal-input-row">
+            <span class="terminal-prompt">dev@zemen:~$</span>
+            <input type="text" id="terminal-input" class="terminal-input" placeholder="e.g. git commit -m &quot;feat: auth&quot;" autocomplete="off" spellcheck="false">
+          </div>
+
+          <!-- Presets -->
+          <div class="terminal-presets">
+            <span style="font-size: 0.75rem; color: #8B949E; align-self: center;">Quick Scenarios:</span>
+            <button class="preset-btn" data-preset="feature-branch">Create Feature Branch</button>
+            <button class="preset-btn" data-preset="merge-feature">Merge to Main</button>
+            <button class="preset-btn" data-preset="reset">Reset Sandbox</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Runbook & Cheatsheet Section -->
+    <section id="cheatsheets" class="cheatsheet-section">
+      <div class="section-header">
+        <div class="section-tag">Rapid Reference</div>
+        <h2 class="section-title">Emergency Runbook & Cheatsheet</h2>
+        <p class="section-desc">
+          Instant solutions to the most common Git emergencies faced by engineers. Click copy to grab the command.
+        </p>
+      </div>
+
+      <div class="cheatsheet-grid">
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-edit" style="color: #A51C30;"></i> Typo in Last Commit Message</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Fix the commit message before pushing:</div>
+            <div class="code-box">
+              <code>git commit --amend -m "feat: corrected message"</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-code-branch" style="color: #0C2340;"></i> Committed to Wrong Branch</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Move the latest unpushed commit to a new branch:</div>
+            <div class="code-box">
+              <code>git branch feat/my-feature &amp;&amp; git reset --hard HEAD~1</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-trash-restore" style="color: #DC2626;"></i> Lost Commits with Hard Reset</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Find your lost commit hash in reflog and restore:</div>
+            <div class="code-box">
+              <code>git reflog &amp;&amp; git checkout -b recover-branch HEAD@{1}</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-lock" style="color: #2563EB;"></i> Lockfile Merge Conflict</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Accept incoming package.json and regenerate cleanly:</div>
+            <div class="code-box">
+              <code>git checkout --theirs package.json &amp;&amp; npm install</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-history" style="color: #059669;"></i> Undo a Pushed Commit Safely</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Revert without rewriting history on shared branch:</div>
+            <div class="code-box">
+              <code>git revert &lt;commit-hash&gt; &amp;&amp; git push origin main</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cheat-card">
+          <h4><i class="fas fa-sliders-h" style="color: #7C3AED;"></i> Squash Last 3 Commits</h4>
+          <div class="cheat-item">
+            <div class="cheat-desc">Clean up messy WIP commits interactively:</div>
+            <div class="code-box">
+              <code>git rebase -i HEAD~3</code>
+              <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About & Inspiration Section -->
+    <section id="about" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2rem;">
+      <div class="section-header" style="margin-bottom: 1.25rem;">
+        <div class="section-tag">Background & Acknowledgements</div>
+        <h2 class="section-title">Inspired by Flatiron Institute Sciware</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: start;">
+        <div>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7;">
+            This curriculum is directly modeled after the acclaimed <strong>Sciware</strong> initiative developed by the <a href="https://github.com/flatironinstitute/sciware" target="_blank" rel="noopener noreferrer" style="color: var(--brand-crimson); font-weight: 600;">Flatiron Institute</a> in New York City. Sciware established a remarkable open-source learning community focused on practical scientific software development and engineering workflows.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            At <strong>Zemen Technologies PLC</strong>, we adapted this model for modern enterprise software development in Africa. We created targeted engineering tracks that bridge real-world business realities—such as distributed teams, payment gateway integrations, preview deployments, lockfile collisions, and AI agent coding—with foundational computer science and version control rigor.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
+          <h4 style="color: var(--brand-navy); margin-bottom: 0.75rem;"><i class="fas fa-lightbulb" style="color: #D4AF37;"></i> How to Contribute</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Zemen engineers and external collaborators are encouraged to add new tracks, propose workflow enhancements, and submit interactive lab solutions.
+          </p>
+          <a href="https://github.com/zementechnologies/git-workflows/blob/main/CONTRIBUTING.md" class="btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">
+            <i class="fas fa-pencil-alt"></i> Contribution Guidelines
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <img src="assets/images/zemen-logo.png" alt="Zemen Logo" style="height: 32px;">
+            <h3 style="margin: 0;">Zemen Technologies PLC</h3>
+          </div>
+          <p>
+            Building high-impact technology solutions, software infrastructure, and developer learning platforms in Ethiopia and beyond.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="link-group">
+            <h5>Tracks</h5>
+            <ul>
+              <li><a href="slides/01-foundations.html">01. Foundations</a></li>
+              <li><a href="slides/02-collaboration.html">02. Collaboration</a></li>
+              <li><a href="slides/03-frontend.html">03. Frontend & Web</a></li>
+              <li><a href="slides/04-devops.html">04. Backend & DevOps</a></li>
+              <li><a href="slides/05-advanced.html">05. Disaster Recovery</a></li>
+              <li><a href="slides/06-ai-automation.html">06. AI & Tooling</a></li>
+            </ul>
+          </div>
+
+          <div class="link-group">
+            <h5>Resources</h5>
+            <ul>
+              <li><a href="https://github.com/zementechnologies/git-workflows" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+              <li><a href="https://github.com/flatironinstitute/sciware" target="_blank" rel="noopener noreferrer">Flatiron Sciware (Inspo)</a></li>
+              <li><a href="#simulator">Visual Git Simulator</a></li>
+              <li><a href="#cheatsheets">Emergency Runbook</a></li>
+            </ul>
+          </div>
+
+          <div class="link-group">
+            <h5>Organization</h5>
+            <ul>
+              <li><a href="https://zemen.com.et" target="_blank" rel="noopener noreferrer">Website (zemen.com.et)</a></li>
+              <li><a href="mailto:hello@zemen.com.et">hello@zemen.com.et</a></li>
+              <li><a href="https://github.com/zementechnologies" target="_blank" rel="noopener noreferrer">@zementechnologies</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Zemen Technologies PLC. All rights reserved. Open-source educational project.
+        </div>
+        <div>
+          Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" style="color: var(--brand-crimson); font-weight: 600;">GitHub Pages</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/git-simulator.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
